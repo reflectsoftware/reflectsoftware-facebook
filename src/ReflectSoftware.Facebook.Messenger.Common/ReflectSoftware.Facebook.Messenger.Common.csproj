@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EEC96650-8114-4973-A2F5-A60B7091F4BD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ReflectSoftware.Facebook.Messenger.Common</RootNamespace>
+    <AssemblyName>ReflectSoftware.Facebook.Messenger.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Converters\AttachmentConverter.cs" />
+    <Compile Include="Converters\EnumValueConverter.cs" />
+    <Compile Include="Enums\NotificationType.cs" />
+    <Compile Include="Enums\SenderAction.cs" />
+    <Compile Include="Extensions\JsonExtensions.cs" />
+    <Compile Include="Interfaces\IAttachment.cs" />
+    <Compile Include="Interfaces\IPayload.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Adjustment.cs" />
+    <Compile Include="Models\Attachment.cs" />
+    <Compile Include="Models\AudioAttachment.cs" />
+    <Compile Include="Models\Button.cs" />
+    <Compile Include="Models\ButtonTemplateAttachment.cs" />
+    <Compile Include="Models\ButtonTemplatePayload.cs" />
+    <Compile Include="Models\Client\AttachmentMessage.cs" />
+    <Compile Include="Models\Client\MenuItem.cs" />
+    <Compile Include="Models\Client\MessageResult.cs" />
+    <Compile Include="Models\Client\MessageSent.cs" />
+    <Compile Include="Models\Client\Result.cs" />
+    <Compile Include="Models\Client\ResultError.cs" />
+    <Compile Include="Models\Client\TextMessage.cs" />
+    <Compile Include="Models\Client\UserProfile.cs" />
+    <Compile Include="Models\Coordinates.cs" />
+    <Compile Include="Models\FallbackAttachment.cs" />
+    <Compile Include="Models\FileAttachment.cs" />
+    <Compile Include="Models\GenericElement.cs" />
+    <Compile Include="Models\GenericTemplateAttachment.cs" />
+    <Compile Include="Models\GenericTemplatePayload.cs" />
+    <Compile Include="Models\ImageAttachment.cs" />
+    <Compile Include="Models\LocationAttachment.cs" />
+    <Compile Include="Models\LocationPayload.cs" />
+    <Compile Include="Models\LocationQuickReply.cs" />
+    <Compile Include="Models\MediaPayload.cs" />
+    <Compile Include="Models\QuickReply.cs" />
+    <Compile Include="Models\ReceiptElement.cs" />
+    <Compile Include="Models\ReceiptTemplateAttachment.cs" />
+    <Compile Include="Models\ReceiptTemplatePayload.cs" />
+    <Compile Include="Models\Summary.cs" />
+    <Compile Include="Models\TemplatePayload.cs" />
+    <Compile Include="Models\TextQuickReply.cs" />
+    <Compile Include="Models\VideoAttachment.cs" />
+    <Compile Include="Models\Webhooks\AccountLinking.cs" />
+    <Compile Include="Models\Webhooks\Callback.cs" />
+    <Compile Include="Models\Webhooks\Delivery.cs" />
+    <Compile Include="Models\Webhooks\Entry.cs" />
+    <Compile Include="Models\Identity.cs" />
+    <Compile Include="Models\Webhooks\MessageReceived.cs" />
+    <Compile Include="Models\Webhooks\Messaging.cs" />
+    <Compile Include="Models\Webhooks\Optin.cs" />
+    <Compile Include="Models\Webhooks\PostBack.cs" />
+    <Compile Include="Models\Webhooks\QuickReplyReceived.cs" />
+    <Compile Include="Models\Webhooks\Read.cs" />
+    <Compile Include="Models\Webhooks\Referral.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\ReflectSoftware.Facebook.licenseheader">
+      <Link>ReflectSoftware.Facebook.licenseheader</Link>
+    </None>
+    <None Include="key.snk" />
+    <None Include="packages.config" />
+    <None Include="ReflectSoftware.Facebook.Messenger.Common.nuspec" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

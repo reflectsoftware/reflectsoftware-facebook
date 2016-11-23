@@ -77,8 +77,7 @@ namespace WebApplication.Controllers
 
                             var userProfile = await _clientMessenger.GetUserProfileAsync(messaging.Sender.Id);
                             RILogManager.Default.SendJSON("userProfile", userProfile);                           
-                            
-                            _FirstTimeCaller.Add(messaging.Sender.Id);
+                                                        
                             var result = await _clientMessenger.SendMessageAsync(messaging.Sender.Id, new TextMessage
                             {
                                 Text = $"Hi, {userProfile.Firstname}. An agent will respond to your question shortly."

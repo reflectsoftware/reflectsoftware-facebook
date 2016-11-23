@@ -23,7 +23,7 @@ namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook.Helpers
 
         public static byte[] ReadRequestDataAsByteArray(HttpContext context)
         {
-            HttpRequest request = context.Request;
+            var request = context.Request;
             if ((request.ContentLength ?? 0) == 0)
             {
                 return null;
@@ -53,7 +53,7 @@ namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook.Helpers
         /// </returns>
         public static string ReadRequestDataAsString(HttpContext context)
         {
-            byte[] bData = ReadRequestDataAsByteArray(context);
+            var bData = ReadRequestDataAsByteArray(context);
             return bData == null ? null : Encoding.UTF8.GetString(bData);
         }
     }

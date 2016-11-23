@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectSoftware.Facebook.Me
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook", "src\ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook\ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook.xproj", "{B8B63F4C-FE42-4233-A5EB-B9B47775E954}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectSoftware.Facebook.Messenger.WebAPI.Webhook", "src\ReflectSoftware.Facebook.Messenger.WebAPI.Webhook\ReflectSoftware.Facebook.Messenger.WebAPI.Webhook.csproj", "{85CA75A0-678C-4E80-8B16-943DB0EB5CD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{B8B63F4C-FE42-4233-A5EB-B9B47775E954}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8B63F4C-FE42-4233-A5EB-B9B47775E954}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8B63F4C-FE42-4233-A5EB-B9B47775E954}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85CA75A0-678C-4E80-8B16-943DB0EB5CD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85CA75A0-678C-4E80-8B16-943DB0EB5CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85CA75A0-678C-4E80-8B16-943DB0EB5CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85CA75A0-678C-4E80-8B16-943DB0EB5CD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,5 +51,6 @@ Global
 		{EEC96650-8114-4973-A2F5-A60B7091F4BD} = {25FE0F58-B25F-4164-821F-B754C13F0F52}
 		{A83998BC-F38A-4EA5-BC3D-562C543C3AE1} = {25FE0F58-B25F-4164-821F-B754C13F0F52}
 		{B8B63F4C-FE42-4233-A5EB-B9B47775E954} = {25FE0F58-B25F-4164-821F-B754C13F0F52}
+		{85CA75A0-678C-4E80-8B16-943DB0EB5CD4} = {25FE0F58-B25F-4164-821F-B754C13F0F52}
 	EndGlobalSection
 EndGlobal

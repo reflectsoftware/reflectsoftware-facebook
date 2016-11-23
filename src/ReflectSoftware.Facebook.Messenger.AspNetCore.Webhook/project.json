@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "title": "ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook",
   "language": "en-US",
   "description": "A ReflectInsight for Facebook Messenger .NET Core.",
@@ -10,7 +10,7 @@
     "copyright": "Copyright 2016, ReflectSoftware",
     "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
     "projectUrl": "https://github.com/ReflectSoftware/reflectsoftware-facebook",
-    "iconUrl": "http://avatars2.githubusercontent.com/u/16177606",    
+    "iconUrl": "http://reflectsoftware.com/images/ReflectInsight-Element-256.png",
     "requireLicenseAcceptance": true,
     "owners": [ "ReflectSoftware Inc." ],
     "authors": [ "ReflectSoftware Inc." ],

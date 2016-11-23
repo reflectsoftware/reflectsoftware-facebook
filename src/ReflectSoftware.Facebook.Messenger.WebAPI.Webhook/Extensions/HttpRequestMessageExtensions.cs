@@ -30,7 +30,7 @@ namespace ReflectSoftware.Facebook.Messenger.WebAPI.Webhook.Extensions
         public static string Query(this HttpRequestMessage request, string name)
         {
             var keyValue = request.GetQueryNameValuePairs().FirstOrDefault(x => x.Key == name);
-            return keyValue.Key != name ? keyValue.Value : null;
+            return keyValue.Key == name ? keyValue.Value : null;
         }
     }
 }

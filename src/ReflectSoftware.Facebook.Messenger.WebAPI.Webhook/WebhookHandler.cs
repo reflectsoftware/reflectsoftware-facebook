@@ -52,8 +52,6 @@ namespace ReflectSoftware.Facebook.Messenger.WebAPI.Webhook
             }
             else if (request.Method == HttpMethod.Get)
             {
-                var queryStrings =  request.GetQueryStrings();
-
                 if (request.Query("hub.mode") == "subscribe")
                 {
                     result = await SubscribeAsycn(request);

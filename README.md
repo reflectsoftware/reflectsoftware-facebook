@@ -33,18 +33,8 @@ namespace WebApiSample.AspNetCore.Controllers
     [Route("api/[controller]")]
     public class ChatterController : Controller
     {
-        private static readonly HashSet<string> _FirstTimeCaller;
-
         private readonly WebhookHandler _webHookHandler;
-        private readonly ClientMessenger _clientMessenger;
-
-        /// <summary>
-        /// Initializes the <see cref="ChatterController"/> class.
-        /// </summary>
-        static ChatterController()
-        {
-            _FirstTimeCaller = new HashSet<string>();
-        }
+        private readonly ClientMessenger _clientMessenger;       
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatterController"/> class.
@@ -204,7 +194,6 @@ namespace WebApiSample.Controllers
 
             return result ?? BadRequest();
         }
-
 
         #region Facebook
         /// <summary>

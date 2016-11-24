@@ -35,7 +35,7 @@ namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook
         /// <param name="context">The context.</param>
         /// <param name="onRequest">The on request.</param>
         /// <returns></returns>
-        private async Task<IActionResult> _HandleAsync(HttpContext context, Func<Callback, IActionResult> onRequest)
+        public async Task<IActionResult> HandleAsync(HttpContext context, Func<Callback, IActionResult> onRequest)
         {
             var result = (IActionResult)null;
 
@@ -57,16 +57,6 @@ namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook
             return result ?? new BadRequestResult();
         }
 
-        /// <summary>
-        /// Handles the asynchronous.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <param name="onRequest">The on request.</param>
-        /// <returns></returns>
-        public Task<IActionResult> HandleAsync(HttpContext context, Func<Callback, IActionResult> onRequest)
-        {
-            return _HandleAsync(context, onRequest);
-        }
 
         /// <summary>
         /// Handles the asynchronous.
@@ -76,10 +66,20 @@ namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook
         /// <returns></returns>
         public async Task<IActionResult> HandleAsync(HttpContext context, Func<Callback, Task<IActionResult>> onRequest)
         {
-            return await _HandleAsync(context, (callback) =>
+            var resultCallback = (Callback)null;
+
+            var result = await HandleAsync(context, (callback) =>
             {
-                return onRequest(callback).Result;
+                resultCallback = callback;
+                return new OkResult();
             });
+
+            if (resultCallback != null)
+            {
+                result = await onRequest(resultCallback);
+            }
+
+            return result;
         }
 
         /// <summary>

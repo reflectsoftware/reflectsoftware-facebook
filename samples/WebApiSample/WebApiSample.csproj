@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebApplication1</RootNamespace>
-    <AssemblyName>WebApplication1</AssemblyName>
+    <RootNamespace>WebApiSample</RootNamespace>
+    <AssemblyName>WebApiSample</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -141,20 +141,17 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ReflectSoftware.Facebook.Messenger.Client\ReflectSoftware.Facebook.Messenger.Client.csproj">
+    <ProjectReference Include="..\..\src\ReflectSoftware.Facebook.Messenger.Client\ReflectSoftware.Facebook.Messenger.Client.csproj">
       <Project>{a83998bc-f38a-4ea5-bc3d-562c543c3ae1}</Project>
       <Name>ReflectSoftware.Facebook.Messenger.Client</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ReflectSoftware.Facebook.Messenger.Common\ReflectSoftware.Facebook.Messenger.Common.csproj">
+    <ProjectReference Include="..\..\src\ReflectSoftware.Facebook.Messenger.Common\ReflectSoftware.Facebook.Messenger.Common.csproj">
       <Project>{eec96650-8114-4973-a2f5-a60b7091f4bd}</Project>
       <Name>ReflectSoftware.Facebook.Messenger.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ReflectSoftware.Facebook.Messenger.WebAPI.Webhook\ReflectSoftware.Facebook.Messenger.WebAPI.Webhook.csproj">
+    <ProjectReference Include="..\..\src\ReflectSoftware.Facebook.Messenger.WebAPI.Webhook\ReflectSoftware.Facebook.Messenger.WebAPI.Webhook.csproj">
       <Project>{85ca75a0-678c-4e80-8b16-943db0eb5cd4}</Project>
       <Name>ReflectSoftware.Facebook.Messenger.WebAPI.Webhook</Name>
     </ProjectReference>

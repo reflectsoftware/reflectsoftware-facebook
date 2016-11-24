@@ -23,7 +23,7 @@ namespace WebApiSample.Controllers
         {
             _webHookHandler = new WebhookHandler();
             _webHookHandler.VerificationToken = "chatter_1234";
-            _clientMessenger = new ClientMessenger("AEAZAHQZAO1zZCIBAK3ZBvjdS7pvIh9ZBVdHUwlvzo95LWVSHjC76LOEEPStX1pt2UMMYWyZC32ZCiK0jjlb4TQkmSjqKVdBG1Td0NgxYdYrY9Y05lBpoI4FMZAAkJolZCemN90ldZCo3rPEGfOiDZBDwGoZC6iVZCRlTBb9NbpHZCsSrnZCTQZDZD");
+            _clientMessenger = new ClientMessenger("EAAZAHQZAO1zZCIBAK3ZBvjdS7pvIh9ZBVdHUwlvzo95LWVSHjC76LOEEPStX1pt2UMMYWyZC32ZCiK0jjlb4TQkmSjqKVdBG1Td0NgxYdYrY9Y05lBpoI4FMZAAkJolZCemN90ldZCo3rPEGfOiDZBDwGoZC6iVZCRlTBb9NbpHZCsSrnZCTQZDZD");
         }
 
         /// <summary>

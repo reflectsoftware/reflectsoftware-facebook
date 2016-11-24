@@ -5,14 +5,14 @@
       "type": "project",
       "framework": ".NETFramework,Version=v4.6.1",
       "compile": {
-        "bin/Debug/ReflectSoftware.Facebook.Messenger.Common.dll": {}
+        "bin/Release/ReflectSoftware.Facebook.Messenger.Common.dll": {}
       },
       "runtime": {
         "../../packages/Newtonsoft.Json.9.0.1/lib/net45/Newtonsoft.Json.dll": {},
-        "bin/Debug/ReflectSoftware.Facebook.Messenger.Common.dll": {}
+        "bin/Release/ReflectSoftware.Facebook.Messenger.Common.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/ReflectSoftware.Facebook.Messenger.Common.pdb": {
+        "bin/Release/ReflectSoftware.Facebook.Messenger.Common.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true

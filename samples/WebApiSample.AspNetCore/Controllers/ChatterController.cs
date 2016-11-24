@@ -38,7 +38,7 @@ namespace WebApiSample.AspNetCore.Controllers
         {
             _webHookHandler = new WebhookHandler();
             _webHookHandler.VerificationToken = "chatter_1234";
-            _clientMessenger = new ClientMessenger("AEAZAHQZAO1zZCIBACZATWyOOPaRWDgFJqgapptnTZCFCLbaHUbJk4w7OJgArLLs43PvztQ3f6KUlySIjZAhPHx9jlP5QILvnhUgFudZAMATGmhmxTzDCkBtZBppwTFNSRJRZC87UV8sUUYWktVVNhL4Tbop9BBPIuL7qfey5gfm0gKwZDZD");            
+            _clientMessenger = new ClientMessenger("EAAZAHQZAO1zZCIBACZATWyOOPaRWDgFJqgapptnTZCFCLbaHUbJk4w7OJgArLLs43PvztQ3f6KUlySIjZAhPHx9jlP5QILvnhUgFudZAMATGmhmxTzDCkBtZBppwTFNSRJRZC87UV8sUUYWktVVNhL4Tbop9BBPIuL7qfey5gfm0gKwZDZD");            
         }
 
         /// <summary>

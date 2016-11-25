@@ -265,3 +265,7 @@ namespace WebApiSample.Controllers
 ```
 
 Copyright &copy; 2016 ReflectSoftware Inc. - Provided under the [Apache License, Version 2.0](http://apache.org/licenses/LICENSE-2.0.html).
+
+I like to give recognition to the following repos for their awesome work: 
+
+* https://github.com/thiagoamarante/Deadlock.FBMessengerPlatform

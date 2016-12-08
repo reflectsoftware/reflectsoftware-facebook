@@ -15,7 +15,7 @@
     "Facebook": "7.0.6",
     "ReflectSoftware.Insight": "5.6.1.2",
     "Microsoft.AspNetCore.StaticFiles": "1.0.0",
-    "ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook": "1.0.2"
+    "ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook": "1.0.3"
   },
 
   "tools": {

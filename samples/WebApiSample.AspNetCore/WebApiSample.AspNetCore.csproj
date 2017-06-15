@@ -13,11 +13,12 @@
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
-    <ProjectReference Include="..\..\src\ReflectSoftware.Facebook.Messenger.Client\ReflectSoftware.Facebook.Messenger.Client.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook\ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook.csproj" />
+    <ProjectReference Include="..\..\src\ReflectSoftware.Facebook.Messenger.Client\ReflectSoftware.Facebook.Messenger.Client.csproj" />
+    <ProjectReference Include="..\..\src\ReflectSoftware.Facebook.Messenger.Common\ReflectSoftware.Facebook.Messenger.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

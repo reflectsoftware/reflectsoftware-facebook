@@ -5,26 +5,23 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Solution Items", "01. Solution Items", "{1022C351-7255-4314-9756-58D352F94F23}"
 	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		build.ps1 = build.ps1
 		README.md = README.md
-		src\ReflectSoftware.Facebook.licenseheader = src\ReflectSoftware.Facebook.licenseheader
-		src\VersionInfo.cs = src\VersionInfo.cs
+		header\ReflectSoftware.Facebook.licenseheader = header\ReflectSoftware.Facebook.licenseheader
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. src", "02. src", "{25FE0F58-B25F-4164-821F-B754C13F0F52}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. samples", "03. samples", "{9DB65601-A628-4E1B-A51E-619119068806}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectSoftware.Facebook.Messenger.Common", "src\ReflectSoftware.Facebook.Messenger.Common\ReflectSoftware.Facebook.Messenger.Common.csproj", "{EEC96650-8114-4973-A2F5-A60B7091F4BD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectSoftware.Facebook.Messenger.Client", "src\ReflectSoftware.Facebook.Messenger.Client\ReflectSoftware.Facebook.Messenger.Client.csproj", "{A83998BC-F38A-4EA5-BC3D-562C543C3AE1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook", "src\ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook\ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook.csproj", "{B8B63F4C-FE42-4233-A5EB-B9B47775E954}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectSoftware.Facebook.Messenger.WebAPI.Webhook", "src\ReflectSoftware.Facebook.Messenger.WebAPI.Webhook\ReflectSoftware.Facebook.Messenger.WebAPI.Webhook.csproj", "{85CA75A0-678C-4E80-8B16-943DB0EB5CD4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiSample", "samples\WebApiSample\WebApiSample.csproj", "{F39E65D7-EC3D-45FB-BD78-73CE1A984CAC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiSample.AspNetCore", "samples\WebApiSample.AspNetCore\WebApiSample.AspNetCore.csproj", "{353987F0-CC4F-4ED9-8803-16E515D49A67}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectSoftware.Facebook.Messenger.Client", "src\ReflectSoftware.Facebook.Messenger.Client\ReflectSoftware.Facebook.Messenger.Client.csproj", "{DA56834D-5F42-4DB4-B000-668A757B02F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectSoftware.Facebook.Messenger.Common", "src\ReflectSoftware.Facebook.Messenger.Common\ReflectSoftware.Facebook.Messenger.Common.csproj", "{01E7AE57-068D-4F5A-B141-4A01CDB74F52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,40 +29,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EEC96650-8114-4973-A2F5-A60B7091F4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEC96650-8114-4973-A2F5-A60B7091F4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEC96650-8114-4973-A2F5-A60B7091F4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEC96650-8114-4973-A2F5-A60B7091F4BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A83998BC-F38A-4EA5-BC3D-562C543C3AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A83998BC-F38A-4EA5-BC3D-562C543C3AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A83998BC-F38A-4EA5-BC3D-562C543C3AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A83998BC-F38A-4EA5-BC3D-562C543C3AE1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B8B63F4C-FE42-4233-A5EB-B9B47775E954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B8B63F4C-FE42-4233-A5EB-B9B47775E954}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8B63F4C-FE42-4233-A5EB-B9B47775E954}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8B63F4C-FE42-4233-A5EB-B9B47775E954}.Release|Any CPU.Build.0 = Release|Any CPU
-		{85CA75A0-678C-4E80-8B16-943DB0EB5CD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85CA75A0-678C-4E80-8B16-943DB0EB5CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85CA75A0-678C-4E80-8B16-943DB0EB5CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85CA75A0-678C-4E80-8B16-943DB0EB5CD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F39E65D7-EC3D-45FB-BD78-73CE1A984CAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F39E65D7-EC3D-45FB-BD78-73CE1A984CAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F39E65D7-EC3D-45FB-BD78-73CE1A984CAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F39E65D7-EC3D-45FB-BD78-73CE1A984CAC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{353987F0-CC4F-4ED9-8803-16E515D49A67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{353987F0-CC4F-4ED9-8803-16E515D49A67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{353987F0-CC4F-4ED9-8803-16E515D49A67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{353987F0-CC4F-4ED9-8803-16E515D49A67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA56834D-5F42-4DB4-B000-668A757B02F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA56834D-5F42-4DB4-B000-668A757B02F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA56834D-5F42-4DB4-B000-668A757B02F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA56834D-5F42-4DB4-B000-668A757B02F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E7AE57-068D-4F5A-B141-4A01CDB74F52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E7AE57-068D-4F5A-B141-4A01CDB74F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E7AE57-068D-4F5A-B141-4A01CDB74F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E7AE57-068D-4F5A-B141-4A01CDB74F52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{EEC96650-8114-4973-A2F5-A60B7091F4BD} = {25FE0F58-B25F-4164-821F-B754C13F0F52}
-		{A83998BC-F38A-4EA5-BC3D-562C543C3AE1} = {25FE0F58-B25F-4164-821F-B754C13F0F52}
 		{B8B63F4C-FE42-4233-A5EB-B9B47775E954} = {25FE0F58-B25F-4164-821F-B754C13F0F52}
-		{85CA75A0-678C-4E80-8B16-943DB0EB5CD4} = {25FE0F58-B25F-4164-821F-B754C13F0F52}
-		{F39E65D7-EC3D-45FB-BD78-73CE1A984CAC} = {9DB65601-A628-4E1B-A51E-619119068806}
 		{353987F0-CC4F-4ED9-8803-16E515D49A67} = {9DB65601-A628-4E1B-A51E-619119068806}
+		{DA56834D-5F42-4DB4-B000-668A757B02F2} = {25FE0F58-B25F-4164-821F-B754C13F0F52}
+		{01E7AE57-068D-4F5A-B141-4A01CDB74F52} = {25FE0F58-B25F-4164-821F-B754C13F0F52}
 	EndGlobalSection
 EndGlobal

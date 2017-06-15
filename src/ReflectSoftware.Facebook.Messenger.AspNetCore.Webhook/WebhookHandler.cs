@@ -83,7 +83,7 @@ namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook
         }
 
         /// <summary>
-        /// Subscribes the asycn.
+        /// Subscribes the async.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns></returns>

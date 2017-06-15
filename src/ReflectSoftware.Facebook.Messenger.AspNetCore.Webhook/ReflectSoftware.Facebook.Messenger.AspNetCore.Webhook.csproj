@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>A ReflectInsight for Facebook Messenger .NET Core.</Description>
+    <Copyright>Copyright 2017, ReflectSoftware</Copyright>
+    <AssemblyTitle>ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook</AssemblyTitle>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <VersionPrefix>1.1.3</VersionPrefix>
+    <Authors>ReflectSoftware Inc.</Authors>
+    <TargetFramework>net461</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyName>ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook</AssemblyName>
+    <AssemblyOriginatorKeyFile>../../key.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <PackageId>ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook</PackageId>
+    <PackageTags>.NET Core;Facebook Messenger;Webhook;Send API;ReflectSoftware;WebAPI</PackageTags>
+    <PackageIconUrl>http://reflectsoftware.com/images/ReflectInsight-Element-256.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/ReflectSoftware/reflectsoftware-facebook</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://https://github.com/ReflectSoftware/reflectsoftware-facebook</RepositoryUrl>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.1.3</Version>    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ReflectSoftware.Facebook.Messenger.Common\ReflectSoftware.Facebook.Messenger.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="1.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="1.1.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>

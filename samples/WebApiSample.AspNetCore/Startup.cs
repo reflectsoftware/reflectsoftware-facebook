@@ -10,7 +10,7 @@ namespace WebApiSample.AspNetCore
     ///  IIS Integration 
     /// https://docs.asp.net/en/latest/publishing/iis.html
     /// </summary>
-    
+
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -22,8 +22,6 @@ namespace WebApiSample.AspNetCore
 
             if (env.IsEnvironment("Development"))
             {
-                // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
-                builder.AddApplicationInsightsSettings(developerMode: true);
             }
 
             builder.AddEnvironmentVariables();
@@ -36,8 +34,7 @@ namespace WebApiSample.AspNetCore
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.            
-            services.AddCors();            
-            services.AddApplicationInsightsTelemetry(Configuration);            
+            services.AddCors();                        
             services.AddMvc();
         }
 
@@ -49,8 +46,6 @@ namespace WebApiSample.AspNetCore
             
             app.UseCors(builder =>builder.AllowAnyOrigin().AllowAnyHeader());
             app.UseStaticFiles();
-            app.UseApplicationInsightsRequestTelemetry();
-            app.UseApplicationInsightsExceptionTelemetry();            
             app.UseMvc();
         }
     }

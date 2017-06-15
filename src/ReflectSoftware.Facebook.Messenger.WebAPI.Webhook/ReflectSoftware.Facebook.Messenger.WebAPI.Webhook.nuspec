@@ -6,10 +6,10 @@
     <title>ReflectSoftware.Facebook.Messenger.WebAPI.Webhook</title>
     <authors>ReflectSoftware Inc.</authors>
     <owners>ReflectSoftware Inc.</owners>
-    <projectUrl>https://github.com/reflectsoftware/Plato.NET</projectUrl>
+    <projectUrl>https://github.com/ReflectSoftware/reflectsoftware-facebook</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>ReflectSoftware.Facebook.Messenger.WebAPI.Webhook package</description>
-    <copyright>© 2016 ReflectSoftware Inc.</copyright>
+    <copyright>© 2017 ReflectSoftware Inc.</copyright>
     <releaseNotes></releaseNotes>
   </metadata>
   <files>

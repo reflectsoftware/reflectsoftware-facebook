@@ -1,8 +1,13 @@
 # ReflectSoftware.Facebook
 
+[![Build status](https://ci.appveyor.com/api/projects/status/0ftxpw3dne25ncra?svg=true)](https://ci.appveyor.com/project/reflectsoftware/reflectsoftware-facebook)
+[![NuGet Version](http://img.shields.io/nuget/v/ReflectSoftware.Facebook.svg?style=flat)](http://www.nuget.org/packages/reflectsoftware/reflectsoftware-facebook/) 
+[![Stars](https://img.shields.io/github/stars/reflectsoftware/reflectsoftware-facebook.svg)](https://github.com/reflectsoftware/reflectsoftware-facebook/stargazers) 
+
+
 ## Getting Started
 
-To install the Reflectinsight Facebook Messenger, run the following command in the Package Manager Console:
+To install the ReflectSoftware Facebook Messenger, run the following command in the Package Manager Console:
 
 
 ### Usage - Webhook for AspNetCore 1.1.3

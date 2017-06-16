@@ -10,9 +10,9 @@
 To install the ReflectSoftware Facebook Messenger, run the following command in the Package Manager Console:
 
 
-**Package** - [ReflectSoftware.Facebook.Messenger.Common](https://www.nuget.org/packages/ReflectSoftware.Facebook.Messenger.Common/) | **Platforms** - .NET Standard 4.6.1 
-**Package** - [ReflectSoftware.Facebook.Messenger.Client](https://www.nuget.org/packages/ReflectSoftware.Facebook.Messenger.Client/) | **Platforms** - .NET Standard 4.6.1 
-**Package** - [ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook](https://www.nuget.org/packages/ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook/) | **Platforms** - .NET Standard 4.6.1 
+**Package** - [ReflectSoftware.Facebook.Messenger.Common](https://www.nuget.org/packages/ReflectSoftware.Facebook.Messenger.Common/) | .NET Standard 4.6.1  
+**Package** - [ReflectSoftware.Facebook.Messenger.Client](https://www.nuget.org/packages/ReflectSoftware.Facebook.Messenger.Client/) | .NET Standard 4.6.1  
+**Package** - [ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook](https://www.nuget.org/packages/ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook/) | .NET Standard 4.6.1  
 
 
 

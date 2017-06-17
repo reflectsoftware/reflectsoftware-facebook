@@ -27,7 +27,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
         /// The timestamp.
         /// </value>
         [JsonProperty("timestamp")]
-        public string Timestamp { get; set; }
+        public long Timestamp { get; set; }
 
         #region Options
         /// <summary>

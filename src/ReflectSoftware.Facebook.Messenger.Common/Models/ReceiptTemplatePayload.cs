@@ -56,7 +56,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// Timestamp of the order, in seconds.
         /// </summary>
         [JsonProperty("timestamp")]
-        public string Timestamp { get; set; }
+        public long Timestamp { get; set; }
 
         /// <summary>
         /// URL of order

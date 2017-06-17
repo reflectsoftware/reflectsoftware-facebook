@@ -19,7 +19,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
         /// Time of update (epoch time in milliseconds)
         /// </summary>
         [JsonProperty("time")]
-        public string Time { get; set; }
+        public long Time { get; set; }
 
         /// <summary>
         /// Array containing objects related to messaging

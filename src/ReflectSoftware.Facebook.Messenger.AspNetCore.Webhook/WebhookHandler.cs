@@ -35,7 +35,7 @@ namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook
         /// <param name="context">The context.</param>
         /// <param name="onRequest">The on request.</param>
         /// <returns></returns>
-        public async Task<IActionResult> HandleAsync(HttpContext context, Func<Callback, IActionResult> onRequest)
+        public async Task<IActionResult> HandleAsync(HttpContext context, Func<Callback, string, IActionResult> onRequest)
         {
             var result = (IActionResult)null;
 
@@ -44,7 +44,7 @@ namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook
                 var data = WebHelper.ReadRequestDataAsString(context);
                 var callback = JsonConvert.DeserializeObject<Callback>(data);
 
-                result = onRequest(callback);
+                result = onRequest(callback, data);
             }
             else if (context.Request.Method == "GET")
             {
@@ -64,19 +64,22 @@ namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook
         /// <param name="context">The context.</param>
         /// <param name="onRequest">The on request.</param>
         /// <returns></returns>
-        public async Task<IActionResult> HandleAsync(HttpContext context, Func<Callback, Task<IActionResult>> onRequest)
+        public async Task<IActionResult> HandleAsync(HttpContext context, Func<Callback, string, Task<IActionResult>> onRequest)
         {
+            var resultData = (string)null;
             var resultCallback = (Callback)null;
-
-            var result = await HandleAsync(context, (callback) =>
+            
+            var result = await HandleAsync(context, (callback, data) =>
             {
                 resultCallback = callback;
+                resultData = data;
+
                 return new OkResult();
             });
 
             if (resultCallback != null)
             {
-                result = await onRequest(resultCallback);
+                result = await onRequest(resultCallback, resultData);
             }
 
             return result;

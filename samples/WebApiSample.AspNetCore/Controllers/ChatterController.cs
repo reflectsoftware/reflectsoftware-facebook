@@ -4,6 +4,7 @@ using ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook;
 using ReflectSoftware.Facebook.Messenger.Client;
 using ReflectSoftware.Facebook.Messenger.Common.Models.Client;
 using ReflectSoftware.Insight;
+using ReflectSoftware.Insight.Common;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -70,8 +71,9 @@ namespace WebApiSample.AspNetCore.Controllers
         /// <returns></returns>
         private async Task<IActionResult> FacebookAsync()
         {
-            return await _webHookHandler.HandleAsync(HttpContext, async (callback) =>
+            return await _webHookHandler.HandleAsync(HttpContext, async (callback, data) =>
             {
+                RILogManager.Default.Send(MessageType.SendDebug, "Facebook.RawData", data);
                 RILogManager.Default.SendJSON("Facebook.Callback", callback);
 
                 foreach (var entry in callback.Entry)

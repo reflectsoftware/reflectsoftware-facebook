@@ -25,41 +25,18 @@ namespace ReflectSoftware.Facebook.Messenger.Client
     /// </summary>
     public class ClientMessenger : FacebookClient
     {
-        private static readonly string _ApiVersion;
+        private readonly string _apiVersion;
+        private readonly JsonSerializerSettings _jsonSerializerSettings;
 
-        private JsonSerializerSettings _jsonSerializerSettings;
-
-        #region Constructors
-        /// <summary>
-        /// Initializes the <see cref="ClientMessenger"/> class.
-        /// </summary>
-        static ClientMessenger()
-        {
-            _ApiVersion = "2.6";
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ClientMessenger"/> class.
-        /// </summary>
-        public ClientMessenger()
-        {
-            Init();
-        }
-
+        #region Constructors      
         /// <summary>
         /// Initializes a new instance of the <see cref="ClientMessenger"/> class.
         /// </summary>
         /// <param name="accessToken">The facebook access_token.</param>
-        public ClientMessenger(string accessToken) : base(accessToken)
+        public ClientMessenger(string accessToken, string version = "2.8") : base(accessToken)
         {
-            Init();
-        }
+            _apiVersion = version;
 
-        /// <summary>
-        /// Initializes this instance.
-        /// </summary>
-        private void Init()
-        {
             SetJsonSerializers();
             _jsonSerializerSettings = new JsonSerializerSettings();
         }
@@ -375,7 +352,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
 
                         content.Add(imageContent, "filedata", contenFilename);
 
-                        using (var response = await client.PostAsync($"{"https"}://graph.facebook.com/v{_ApiVersion}/me/messages?access_token={AccessToken}", content))
+                        using (var response = await client.PostAsync($"{"https"}://graph.facebook.com/v{_apiVersion}/me/messages?access_token={AccessToken}", content))
                         {
                             var returnValue = (JObject)JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync());
                             

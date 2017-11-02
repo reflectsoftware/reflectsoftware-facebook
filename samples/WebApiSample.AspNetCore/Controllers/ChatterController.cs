@@ -5,10 +5,7 @@ using ReflectSoftware.Facebook.Messenger.Client;
 using ReflectSoftware.Facebook.Messenger.Common.Models.Client;
 using ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks;
 using ReflectSoftware.Insight;
-using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace WebApiSample.AspNetCore.Controllers

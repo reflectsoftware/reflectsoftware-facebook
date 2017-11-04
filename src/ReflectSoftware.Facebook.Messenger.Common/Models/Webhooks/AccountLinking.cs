@@ -13,10 +13,10 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
     /// </summary>
     public class AccountLinking
     {
-        [JsonProperty("status")]
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
         public string Status { get; set; }
 
-        [JsonProperty("authorization_code")]
+        [JsonProperty("authorization_code", NullValueHandling = NullValueHandling.Ignore)]
         public string AuthorizationCode { get; set; }
     }
 }

@@ -12,19 +12,19 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
         /// <summary>
         /// Page ID of page
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
 
         /// <summary>
         /// Time of update (epoch time in milliseconds)
         /// </summary>
-        [JsonProperty("time")]
+        [JsonProperty("time", NullValueHandling = NullValueHandling.Ignore)]
         public long Time { get; set; }
 
         /// <summary>
         /// Array containing objects related to messaging
         /// </summary>
-        [JsonProperty("messaging")]
+        [JsonProperty("messaging", NullValueHandling = NullValueHandling.Ignore)]
         public List<Messaging> Messaging { get; set; }
     }
 }

@@ -14,13 +14,13 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
     /// </summary>
     public class Referral
     {
-        [JsonProperty("ref")]
+        [JsonProperty("ref", NullValueHandling = NullValueHandling.Ignore)]
         public string Ref { get; set; }
 
-        [JsonProperty("source")]
+        [JsonProperty("source", NullValueHandling = NullValueHandling.Ignore)]
         public string Source { get; set; }
 
-        [JsonProperty("type")]
+        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
     }
 }

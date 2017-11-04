@@ -16,8 +16,8 @@ namespace WebApiSample.AspNetCore.Controllers
     /// 
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
-    [Route("api")]
-    public class ChatterController : Controller
+    [Route("v1/inbound/customer/[controller]")]
+    public class MessengerController : Controller
     {
         private static readonly HashSet<string> _FirstTimeCaller;
 
@@ -25,19 +25,19 @@ namespace WebApiSample.AspNetCore.Controllers
         private readonly ClientMessenger _clientMessenger;
 
         /// <summary>
-        /// Initializes the <see cref="ChatterController"/> class.
+        /// Initializes the <see cref="MessengerController"/> class.
         /// </summary>
-        static ChatterController()
+        static MessengerController()
         {
             _FirstTimeCaller = new HashSet<string>();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChatterController"/> class.
+        /// Initializes a new instance of the <see cref="MessengerController"/> class.
         /// </summary>
-        public ChatterController()
+        public MessengerController()
         {
-            _webHookHandler = new WebhookHandler("chatter_1234", "79faa9a8710333289b595925e5fb7e72");            
+            _webHookHandler = new WebhookHandler("channelsis", "79faa9a8710333289b595925e5fb7e72");            
             _clientMessenger = new ClientMessenger("EAAa2PqNTZABwBAAXOwwbAbZCaUFqU3KTeiZC1LCJjOr2ZAZB32bXx0p9gMqWedLJsse4xW8BXMatyYrbvIp0ICLiDmRVxM8Yp6cHPZATYjDsz0qZCmhhZAHJNeYpkVNMuEKjIw9goQUHgI54YOouZBzJa80fZCYoxtgJaWVYyQEKOhawZDZD");            
         }
 
@@ -48,7 +48,7 @@ namespace WebApiSample.AspNetCore.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost, HttpGet]
-        [Route("receive/messenger/{id}")]
+        [Route("{id}")]
         public async Task<IActionResult> ReceiveAsync(string id)
         {
             var result = await FacebookAsync();
@@ -74,15 +74,15 @@ namespace WebApiSample.AspNetCore.Controllers
                     /// to know the sequence of a message in a conversation. Messages are always sent in order.
                     /// You can subscribe to this callback by selecting the message field when setting up your webhook.
 
-                    var userProfile = await _clientMessenger.GetUserProfileAsync(messaging.Sender.Id);
-                    RILogManager.Default.SendJSON("userProfile", userProfile);
+                    //var userProfile = await _clientMessenger.GetUserProfileAsync(messaging.Sender.Id);
+                    //RILogManager.Default.SendJSON("userProfile", userProfile);
 
-                    var result = await _clientMessenger.SendMessageAsync(messaging.Sender.Id, new TextMessage
-                    {
-                        Text = $"Hi, {userProfile.Firstname}. An agent will respond to your question shortly."
-                    });
+                    //var result = await _clientMessenger.SendMessageAsync(messaging.Sender.Id, new TextMessage
+                    //{
+                    //    Text = $"Hi, {userProfile.Firstname}. An agent will respond to your question shortly."
+                    //});
 
-                    RILogManager.Default.SendJSON("Results", new[] { result });
+                    //RILogManager.Default.SendJSON("Results", new[] { result });
                 }
                 else if (messaging.Postback != null)
                 {

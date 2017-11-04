@@ -21,7 +21,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Client
         /// <summary>
         /// attachment is used to send messages with images or Structured Messages
         /// </summary>
-        [JsonProperty("attachment")]
+        [JsonProperty("attachment", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public IAttachment Attachment { get; set; }
     }
 }

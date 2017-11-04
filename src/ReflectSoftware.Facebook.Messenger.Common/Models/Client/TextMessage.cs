@@ -24,7 +24,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Client
         /// <summary>
         /// text is used when sending a text message, must be UTF-8 and has a 320 character limit
         /// </summary>
-        [JsonProperty("text")]
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
         public string Text { get; set; }
     }
 }

@@ -389,7 +389,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
 
         #region Methods Private
         /// <summary>
-        /// Sets the json serializers.
+        /// Sets the json serializer.
         /// </summary>
         private void SetJsonSerializers()
         {

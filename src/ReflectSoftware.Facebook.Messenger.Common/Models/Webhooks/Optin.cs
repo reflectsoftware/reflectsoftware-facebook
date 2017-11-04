@@ -11,7 +11,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
         /// <summary>
         /// data-ref parameter that was defined with the entry point
         /// </summary>
-        [JsonProperty("ref")]
+        [JsonProperty("ref", NullValueHandling = NullValueHandling.Ignore)]
         public string Ref { get; set; }
     }
 }

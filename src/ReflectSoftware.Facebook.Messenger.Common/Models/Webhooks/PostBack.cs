@@ -15,7 +15,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
         /// <summary>
         /// payload parameter that was defined with the button
         /// </summary>
-        [JsonProperty("payload")]
+        [JsonProperty("payload", NullValueHandling = NullValueHandling.Ignore)]
         public string Payload { get; set; }
     }
 }

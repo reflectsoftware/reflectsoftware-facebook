@@ -15,13 +15,13 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
         /// <summary>
         /// All messages that were sent before this timestamp were read
         /// </summary>
-        [JsonProperty("watermark")]
+        [JsonProperty("watermark", NullValueHandling = NullValueHandling.Ignore)]
         public string Watermark { get; set; }
 
         /// <summary>
         /// Sequence number
         /// </summary>
-        [JsonProperty("seq")]
+        [JsonProperty("seq", NullValueHandling = NullValueHandling.Ignore)]
         public int Seq { get; set; }
     }
 }

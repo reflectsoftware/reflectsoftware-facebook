@@ -16,13 +16,13 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Client
         /// <summary>
         /// Value is web_url or postback
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; private set; }
 
         /// <summary>
         /// title has a 30 character limit
         /// </summary>
-        [JsonProperty("title")]
+        [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
         public string Title { get; set; }
     }
 }

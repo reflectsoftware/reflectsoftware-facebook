@@ -14,43 +14,43 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
         /// <summary>
         /// Message ID
         /// </summary>
-        [JsonProperty("mid")]
+        [JsonProperty("mid", NullValueHandling = NullValueHandling.Ignore)]
         public string Mid { get; set; }
 
         /// <summary>
         /// Sequence number
         /// </summary>
-        [JsonProperty("seq")]
+        [JsonProperty("seq", NullValueHandling = NullValueHandling.Ignore)]
         public int Seq { get; set; }
 
         /// <summary>
         /// Text of message
         /// </summary>
-        [JsonProperty("text")]
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
         public string Text { get; set; }
 
         /// <summary>
         /// Optional custom data provided by the sending app
         /// </summary>
-        [JsonProperty("quick_reply")]
+        [JsonProperty("quick_reply", NullValueHandling = NullValueHandling.Ignore)]
         public QuickReplyReceived QuickReply { get; set; }
 
         /// <summary>
         /// Indicates the message sent from the page itself
         /// </summary>
-        [JsonProperty("is_echo")]
+        [JsonProperty("is_echo", NullValueHandling = NullValueHandling.Ignore)]
         public bool IsEcho { get; set; }
 
         /// <summary>
         /// ID of the app from which the message was sent
         /// </summary>
-        [JsonProperty("app_id")]
+        [JsonProperty("app_id", NullValueHandling = NullValueHandling.Ignore)]
         public string AppId { get; set; }
 
         /// <summary>
         /// Custom string passed to the Send API as the metadata field
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Ignore)]
         public string Metadata { get; set; }
 
         /// <summary>

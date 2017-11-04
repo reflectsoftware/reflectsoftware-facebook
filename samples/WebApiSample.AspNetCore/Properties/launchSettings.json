@@ -15,8 +15,7 @@
       }
     },
     "WebApplication": {
-      "commandName": "Project",
-      "launchUrl": "http://localhost:5000/api/values",
+      "commandName": "Project",      
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

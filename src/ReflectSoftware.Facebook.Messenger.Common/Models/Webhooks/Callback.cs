@@ -12,13 +12,13 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
         /// <summary>
         /// Value will be page
         /// </summary>
-        [JsonProperty("object")]
+        [JsonProperty("object", NullValueHandling = NullValueHandling.Ignore)]
         public string Object { get; set; }
 
         /// <summary>
         /// Array containing event data
         /// </summary>
-        [JsonProperty("entry")]
+        [JsonProperty("entry", NullValueHandling = NullValueHandling.Ignore)]
         public List<Entry> Entry { get; set; }
     }
 }

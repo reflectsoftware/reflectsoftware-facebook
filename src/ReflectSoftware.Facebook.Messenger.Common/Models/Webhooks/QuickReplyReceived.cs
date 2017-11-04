@@ -8,7 +8,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
 {
     public class QuickReplyReceived
     {
-        [JsonProperty("payload")]
+        [JsonProperty("payload", NullValueHandling = NullValueHandling.Ignore)]
         public string Payload { get; set; }
     }
 }

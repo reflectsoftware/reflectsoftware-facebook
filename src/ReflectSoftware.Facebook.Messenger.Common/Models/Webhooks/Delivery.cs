@@ -16,19 +16,19 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
         /// <summary>
         /// Array containing message IDs of messages that were delivered. Field may not be present.
         /// </summary>
-        [JsonProperty("mids")]
+        [JsonProperty("mids", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Mids { get; set; }
 
         /// <summary>
         /// All messages that were sent before this timestamp were delivered
         /// </summary>
-        [JsonProperty("watermark")]
+        [JsonProperty("watermark", NullValueHandling = NullValueHandling.Ignore)]
         public string Watermark { get; set; }
 
         /// <summary>
         /// Sequence number
         /// </summary>
-        [JsonProperty("seq")]
+        [JsonProperty("seq", NullValueHandling = NullValueHandling.Ignore)]
         public int Seq { get; set; }
     }
 }

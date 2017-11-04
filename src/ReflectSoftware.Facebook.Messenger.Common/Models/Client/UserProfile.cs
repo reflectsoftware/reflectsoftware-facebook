@@ -8,25 +8,25 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Client
 {
     public class UserProfile
     {
-        [JsonProperty("first_name")]
+        [JsonProperty("first_name", NullValueHandling = NullValueHandling.Ignore)]
         public string Firstname { get; set; }
 
-        [JsonProperty("last_name")]
+        [JsonProperty("last_name", NullValueHandling = NullValueHandling.Ignore)]
         public string Lastname { get; set; }
 
-        [JsonProperty("profile_pic")]
+        [JsonProperty("profile_pic", NullValueHandling = NullValueHandling.Ignore)]
         public string ProfilePicture { get; set; }
 
-        [JsonProperty("locale")]
+        [JsonProperty("locale", NullValueHandling = NullValueHandling.Ignore)]
         public string Locale { get; set; }
 
-        [JsonProperty("timezone")]
+        [JsonProperty("timezone", NullValueHandling = NullValueHandling.Ignore)]
         public decimal Timezone { get; set; }
 
-        [JsonProperty("gender")]
+        [JsonProperty("gender", NullValueHandling = NullValueHandling.Ignore)]
         public string Gender { get; set; }
 
-        [JsonProperty("is_payment_enabled")]
+        [JsonProperty("is_payment_enabled", NullValueHandling = NullValueHandling.Ignore)]
         public bool IsPaymentEnabled { get; set; }
     }
 }

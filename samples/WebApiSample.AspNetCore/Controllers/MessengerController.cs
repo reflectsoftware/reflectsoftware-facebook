@@ -74,15 +74,15 @@ namespace WebApiSample.AspNetCore.Controllers
                     /// to know the sequence of a message in a conversation. Messages are always sent in order.
                     /// You can subscribe to this callback by selecting the message field when setting up your webhook.
 
-                    //var userProfile = await _clientMessenger.GetUserProfileAsync(messaging.Sender.Id);
-                    //RILogManager.Default.SendJSON("userProfile", userProfile);
+                    var userProfile = await _clientMessenger.GetUserProfileAsync(messaging.Sender.Id);
+                    RILogManager.Default.SendJSON("userProfile", userProfile);
 
-                    //var result = await _clientMessenger.SendMessageAsync(messaging.Sender.Id, new TextMessage
-                    //{
-                    //    Text = $"Hi, {userProfile.Firstname}. An agent will respond to your question shortly."
-                    //});
+                    var result = await _clientMessenger.SendMessageAsync(messaging.Sender.Id, new TextMessage
+                    {
+                        Text = $"Hi, {userProfile.Firstname}. An agent will respond to your question shortly."
+                    });
 
-                    //RILogManager.Default.SendJSON("Results", new[] { result });
+                    RILogManager.Default.SendJSON("Results", new[] { result });
                 }
                 else if (messaging.Postback != null)
                 {

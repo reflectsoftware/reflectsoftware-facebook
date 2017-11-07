@@ -13,33 +13,33 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// Bubble title
         /// has a 80 character limit
         /// </summary>
-        [JsonProperty("title")]
+        [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
         public string Title { get; set; }
 
         /// <summary>
         /// Bubble subtitle
         /// has a 80 character limit
         /// </summary>
-        [JsonProperty("subtitle")]
+        [JsonProperty("subtitle", NullValueHandling = NullValueHandling.Ignore)]
         public string Subtitle { get; set; }
 
         /// <summary>
         /// URL that is opened when bubble is tapped
         /// </summary>
-        [JsonProperty("item_url")]
+        [JsonProperty("item_url", NullValueHandling = NullValueHandling.Ignore)]
         public string ItemUrl { get; set; }
 
         /// <summary>
         /// Bubble image
         /// </summary>
-        [JsonProperty("image_url")]
+        [JsonProperty("image_url", NullValueHandling = NullValueHandling.Ignore)]
         public string ImageUrl { get; set; }
 
         /// <summary>
         /// Set of buttons that appear as call-to-actions
         /// Call-to-action items: 3 buttons
         /// </summary>
-        [JsonProperty("buttons")]
+        [JsonProperty("buttons", NullValueHandling = NullValueHandling.Ignore)]
         public List<Button> Buttons { get; set; }
     }
 }

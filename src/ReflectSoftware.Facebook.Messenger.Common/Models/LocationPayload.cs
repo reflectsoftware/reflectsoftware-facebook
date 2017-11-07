@@ -19,7 +19,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
             Coordinates = coordinates;
         }
 
-        [JsonProperty("coordinates")]
+        [JsonProperty("coordinates", NullValueHandling = NullValueHandling.Ignore)]
         public Coordinates Coordinates { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// Data for each bubble in message
         /// Bubbles per message (horizontal scroll): 10 elements
         /// </summary>
-        [JsonProperty("elements")]
+        [JsonProperty("elements", NullValueHandling = NullValueHandling.Ignore)]
         public List<GenericElement> Elements { get; set; }
     }
 }

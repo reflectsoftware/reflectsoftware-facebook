@@ -13,7 +13,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
             Id = id;
         }
 
-        [JsonProperty("id")]
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
     }
 }

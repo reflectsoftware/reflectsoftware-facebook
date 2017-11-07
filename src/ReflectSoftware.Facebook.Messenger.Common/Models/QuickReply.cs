@@ -16,13 +16,13 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// <summary>
         /// Value must be text or location
         /// </summary>
-        [JsonProperty("content_type")]
+        [JsonProperty("content_type", NullValueHandling = NullValueHandling.Ignore)]
         public string ContentType { get; private set; }       
 
         /// <summary>
         /// Image for image_url should be at least 24x24 and will be cropped and resized
         /// </summary>
-        [JsonProperty("image_url")]
+        [JsonProperty("image_url", NullValueHandling = NullValueHandling.Ignore)]
         public string ImageUrl { get; set; }
     }
 }

@@ -22,13 +22,13 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// <summary>
         /// Caption of button (has a 20 character limit)
         /// </summary>
-        [JsonProperty("title")]
+        [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
         public string Title { get; set; }
 
         /// <summary>
         /// Custom data that will be sent back to you via webhook (has a 1000 character limit)
         /// </summary>
-        [JsonProperty("payload")]
+        [JsonProperty("payload", NullValueHandling = NullValueHandling.Ignore)]
         public string Payload { get; set; }
     }
 }

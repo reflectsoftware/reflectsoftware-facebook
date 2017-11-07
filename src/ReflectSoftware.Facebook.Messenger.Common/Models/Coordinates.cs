@@ -11,13 +11,13 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// <summary>
         /// Latitude
         /// </summary>
-        [JsonProperty("lat")]
+        [JsonProperty("lat", NullValueHandling = NullValueHandling.Ignore)]
         public string Latitude { get; set; }
 
         /// <summary>
         /// Longitude
         /// </summary>
-        [JsonProperty("long")]
+        [JsonProperty("long", NullValueHandling = NullValueHandling.Ignore)]
         public string Longitude { get; set; }
     }
 }

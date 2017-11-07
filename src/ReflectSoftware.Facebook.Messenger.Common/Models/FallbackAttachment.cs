@@ -18,13 +18,13 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// <summary>
         /// Title of attachment (optional)
         /// </summary>
-        [JsonProperty("title")]
+        [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
         public string Title { get; set; }
 
         /// <summary>
         /// URL of attachment (optional)
         /// </summary>
-        [JsonProperty("url")]
+        [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
         public string Url { get; set; }
     }
 }

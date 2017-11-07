@@ -12,7 +12,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         public AudioAttachment() : base("audio")
         {
             Payload = new MediaPayload();
-        }
+        }   
 
         public AudioAttachment(string url) : this()
         {

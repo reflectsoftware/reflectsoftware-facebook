@@ -31,14 +31,14 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// Text that appears in main body
         /// text must be UTF-8 and has a 320 character limit
         /// </summary>
-        [JsonProperty("text")]
+        [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
         public string Text { get; set; }
 
         /// <summary>
         /// Set of buttons that appear as call-to-actions
         /// buttons is limited to 3
         /// </summary>
-        [JsonProperty("buttons")]
+        [JsonProperty("buttons", NullValueHandling = NullValueHandling.Ignore)]
         public List<Button> Buttons { get; set; }
     }
 }

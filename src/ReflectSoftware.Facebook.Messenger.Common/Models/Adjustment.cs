@@ -11,13 +11,13 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// <summary>
         /// Name of adjustment
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
 
         /// <summary>
         /// Adjusted amount
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", NullValueHandling = NullValueHandling.Ignore)]
         public decimal Amount { get; set; }
     }
 }

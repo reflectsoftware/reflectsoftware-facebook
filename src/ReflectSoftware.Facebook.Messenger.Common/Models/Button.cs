@@ -16,7 +16,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// <summary>
         /// Value is web_url, postback, phone_number, element_share, payment
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; private set; }
     }
 }

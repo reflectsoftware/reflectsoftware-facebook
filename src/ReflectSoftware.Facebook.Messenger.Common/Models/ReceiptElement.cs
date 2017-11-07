@@ -12,38 +12,38 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// Title of item
         /// 45 characters
         /// </summary>
-        [JsonProperty("title")]
+        [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
         public string Title { get; set; }
 
         /// <summary>
         /// Bubble Title of item
         /// 80 characters
         /// </summary>
-        [JsonProperty("subtitle")]
+        [JsonProperty("subtitle", NullValueHandling = NullValueHandling.Ignore)]
         public string Subtitle { get; set; }
 
         /// <summary>
         /// Quantity of item
         /// </summary>
-        [JsonProperty("quantity")]
+        [JsonProperty("quantity", NullValueHandling = NullValueHandling.Ignore)]
         public int Quantity { get; set; }
 
         /// <summary>
         /// Item price
         /// </summary>
-        [JsonProperty("price")]
+        [JsonProperty("price", NullValueHandling = NullValueHandling.Ignore)]
         public decimal Price { get; set; }
 
         /// <summary>
         /// Currency of price
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonProperty("currency", NullValueHandling = NullValueHandling.Ignore)]
         public string Currency { get; set; }
 
         /// <summary>
         /// Image URL of item
         /// </summary>
-        [JsonProperty("image_url")]
+        [JsonProperty("image_url", NullValueHandling = NullValueHandling.Ignore)]
         public string ImageUrl { get; set; }  
     }
 }

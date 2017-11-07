@@ -8,7 +8,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
 {
     public class ListElement : GenericElement
     {
-        [JsonProperty("default_action")]
+        [JsonProperty("default_action", NullValueHandling = NullValueHandling.Ignore)]
         public ListButton DefaultAction { get; set; }
     }
 }

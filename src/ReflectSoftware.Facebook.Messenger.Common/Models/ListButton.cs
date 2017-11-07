@@ -12,19 +12,19 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         {
         }
 
-        [JsonProperty("title")]
+        [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
         public string Title { get; set; }
 
-        [JsonProperty("url")]
+        [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
         public string Url { get; set; }
 
-        [JsonProperty("messenger_extensions")]
+        [JsonProperty("messenger_extensions", NullValueHandling = NullValueHandling.Ignore)]
         public bool MessengerExtensions { get; set; }
 
-        [JsonProperty("webview_height_ratio")]
+        [JsonProperty("webview_height_ratio", NullValueHandling = NullValueHandling.Ignore)]
         public string WebviewHeightRatio { get; set; }
 
-        [JsonProperty("fallback_url")]
+        [JsonProperty("fallback_url", NullValueHandling = NullValueHandling.Ignore)]
         public string FallbackUrl { get; set; }
     }
 }

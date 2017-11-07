@@ -17,10 +17,10 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// <summary>
         /// image, audio, video, file, location, template, fallback
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; private set; }
 
-        [JsonProperty("payload")]
+        [JsonProperty("payload", NullValueHandling = NullValueHandling.Ignore)]
         public T Payload { get; set; }
     }
 }

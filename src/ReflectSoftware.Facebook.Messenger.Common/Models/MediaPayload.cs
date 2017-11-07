@@ -22,7 +22,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// <summary>
         /// URL of media
         /// </summary>
-        [JsonProperty("url")]
+        [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
         public string Url { get; set; }
     }
 }

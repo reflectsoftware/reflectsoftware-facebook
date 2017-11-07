@@ -17,7 +17,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         /// <summary>
         /// Template type generic, button or receipt
         /// </summary>
-        [JsonProperty("template_type")]
+        [JsonProperty("template_type", NullValueHandling = NullValueHandling.Ignore)]
         public string TemplateType { get; private set; } 
     }
 }

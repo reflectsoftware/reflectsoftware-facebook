@@ -18,7 +18,15 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
             Elements = elements;
         }
 
-
+        /// <summary>
+        /// Gets or sets the image aspect ratio.
+        /// </summary>
+        /// <value>
+        /// The image aspect ratio.
+        /// </value>
+        [JsonProperty("image_aspect_ratio", NullValueHandling = NullValueHandling.Ignore)]
+        public string ImageAspectRatio { get; set; }
+        
         // <summary>
         /// Data for each bubble in message
         /// Bubbles per message (horizontal scroll): 10 elements

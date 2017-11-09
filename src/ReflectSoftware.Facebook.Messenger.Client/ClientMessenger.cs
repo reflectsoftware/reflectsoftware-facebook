@@ -84,7 +84,16 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     result.Success = result.Message.Contains("Successfully");
                 }
             }
-            catch(Exception ex)
+            catch (WebExceptionWrapper ex)
+            {
+                result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Type = "Bad connection",
+                    Code = -1000,
+                };
+            }
+            catch (Exception ex)
             {
                 result.Message = ex.Message;
             }
@@ -138,6 +147,15 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     result.Success = result.Message.Contains("Successfully");
                 }
             }
+            catch (WebExceptionWrapper ex)
+            {
+                result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Type = "Bad connection",
+                    Code = -1000,
+                };
+            }
             catch (Exception ex)
             {
                 result.Message = ex.Message;
@@ -185,6 +203,15 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     result.Success = result.Message.Contains("Successfully");
                 }
             }
+            catch (WebExceptionWrapper ex)
+            {
+                result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Type = "Bad connection",
+                    Code = -1000,
+                };
+            }
             catch (Exception ex)
             {
                 result.Message = ex.Message;
@@ -222,6 +249,15 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     result.Success = true;
                 }   
             }
+            catch (WebExceptionWrapper ex)
+            {
+                result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Type = "Bad connection",
+                    Code = -1000,
+                };
+            }
             catch (Exception ex)
             {
                 result.Message = ex.Message;
@@ -243,6 +279,15 @@ namespace ReflectSoftware.Facebook.Messenger.Client
 
                 result.Error = CreateResultError(returnValue);
                 result.Success = result.Error == null;
+            }
+            catch (WebExceptionWrapper ex)
+            {
+                result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Type = "Bad connection",
+                    Code = -1000,
+                };
             }
             catch (Exception ex)
             {
@@ -281,6 +326,15 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     result.MessageId = returnValue.Value<string>("message_id");
                     result.Success = true;
                 }
+            }
+            catch (WebExceptionWrapper ex)
+            {
+                result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Type = "Bad connection",
+                    Code = -1000,
+                };
             }
             catch (Exception ex)
             {
@@ -366,6 +420,15 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                         }
                     }
                 }
+            }
+            catch (WebExceptionWrapper ex)
+            {
+                result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Type = "Bad connection",
+                    Code = -1000,
+                };
             }
             catch (Exception ex)
             {

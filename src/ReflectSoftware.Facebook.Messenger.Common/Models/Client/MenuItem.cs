@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace ReflectSoftware.Facebook.Messenger.Common.Models.Client
 {
-    public abstract class MenuItem
+    public class MenuItem
     {
         public MenuItem(string type)
         {

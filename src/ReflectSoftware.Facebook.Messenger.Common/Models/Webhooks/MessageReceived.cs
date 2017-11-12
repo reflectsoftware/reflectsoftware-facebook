@@ -2,9 +2,8 @@
 // Copyright (c) 2017 ReflectSoftware Inc.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. 
 
-using ReflectSoftware.Facebook.Messenger.Common.Converters;
-using ReflectSoftware.Facebook.Messenger.Common.Interfaces;
 using Newtonsoft.Json;
+using ReflectSoftware.Facebook.Messenger.Common.Converters;
 using System.Collections.Generic;
 
 namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
@@ -57,6 +56,6 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
         /// attachment is used to send messages with images or Structured Messages
         /// </summary>
         [JsonProperty("attachments", ItemConverterType = typeof(AttachmentConverter))]
-        public List<IAttachment> Attachments { get; set; }
+        public List<Attachment> Attachments { get; set; }
     }
 }

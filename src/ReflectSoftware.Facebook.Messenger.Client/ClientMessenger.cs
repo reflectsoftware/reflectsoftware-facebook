@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ReflectSoftware.Facebook.Messenger.Common.Enums;
 using ReflectSoftware.Facebook.Messenger.Common.Extensions;
-using ReflectSoftware.Facebook.Messenger.Common.Interfaces;
 using ReflectSoftware.Facebook.Messenger.Common.Models;
 using ReflectSoftware.Facebook.Messenger.Common.Models.Client;
 using System;
@@ -356,7 +355,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         {            
             var fileType = string.Empty;
             var contenFilename = $"@/tmp/{filename}";
-            var attachment = (new FileAttachment() as IAttachment);
+            var attachment = (new FileAttachment() as Attachment);
 
             switch (type)
             {

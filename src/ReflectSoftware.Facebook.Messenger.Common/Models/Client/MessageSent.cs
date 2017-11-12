@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace ReflectSoftware.Facebook.Messenger.Common.Models.Client
 {
-    public abstract class MessageSent
+    public class MessageSent
     {
         /// <summary>
         /// Custom string that will be re-delivered to webhook listeners

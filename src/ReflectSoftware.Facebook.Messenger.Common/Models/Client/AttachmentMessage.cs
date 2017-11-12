@@ -2,7 +2,6 @@
 // Copyright (c) 2017 ReflectSoftware Inc.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. 
 
-using ReflectSoftware.Facebook.Messenger.Common.Interfaces;
 using Newtonsoft.Json;
 
 namespace ReflectSoftware.Facebook.Messenger.Common.Models.Client
@@ -13,7 +12,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Client
         {
         }
 
-        public AttachmentMessage(IAttachment attachment)
+        public AttachmentMessage(Attachment attachment)
         {
             Attachment = attachment;
         }
@@ -22,6 +21,6 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Client
         /// attachment is used to send messages with images or Structured Messages
         /// </summary>
         [JsonProperty("attachment", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public IAttachment Attachment { get; set; }
+        public Attachment Attachment { get; set; }
     }
 }

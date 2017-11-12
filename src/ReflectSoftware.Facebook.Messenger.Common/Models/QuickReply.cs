@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace ReflectSoftware.Facebook.Messenger.Common.Models
 {
-    public abstract class QuickReply
+    public class QuickReply
     {
         public QuickReply(string contentType)
         {

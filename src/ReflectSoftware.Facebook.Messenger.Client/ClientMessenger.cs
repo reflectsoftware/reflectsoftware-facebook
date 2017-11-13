@@ -97,6 +97,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             catch (Exception ex)
             {
                 result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Code = -1,
+                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
+                    Type = "Client library error"
+                };
             }
 
             return result;
@@ -161,6 +167,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             catch (Exception ex)
             {
                 result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Code = -1,
+                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
+                    Type = "Client library error"
+                };
             }
 
             return result;
@@ -218,6 +230,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             catch (Exception ex)
             {
                 result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Code = -1,
+                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
+                    Type = "Client library error"
+                };
             }
 
             return result;
@@ -265,6 +283,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             catch (Exception ex)
             {
                 result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Code = -1,
+                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
+                    Type = "Client library error"
+                };
             }
 
             return result;
@@ -297,6 +321,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             catch (Exception ex)
             {
                 result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Code = -1,
+                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
+                    Type = "Client library error"
+                };
             }
 
             return result;
@@ -345,6 +375,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             catch (Exception ex)
             {
                 result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Code = -1,
+                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
+                    Type = "Client library error"
+                };
             }
 
             return result;
@@ -442,6 +478,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             catch (Exception ex)
             {
                 result.Message = ex.Message;
+                result.Error = new ResultError
+                {
+                    Code = -1,
+                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
+                    Type = "Client library error"
+                };
             }
 
             return result;

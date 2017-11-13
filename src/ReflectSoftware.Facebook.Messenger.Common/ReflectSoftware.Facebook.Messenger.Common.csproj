@@ -26,9 +26,9 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.0.6</Version>
+    <Version>2.0.7</Version>
     <RootNamespace>ReflectSoftware.Facebook.Messenger.Common</RootNamespace>
-    <AssemblyVersion>2.0.6.0</AssemblyVersion>
+    <AssemblyVersion>2.0.7.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

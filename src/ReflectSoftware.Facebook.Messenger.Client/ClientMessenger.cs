@@ -12,6 +12,7 @@ using ReflectSoftware.Facebook.Messenger.Common.Models.Client;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -85,11 +86,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             }
             catch (WebExceptionWrapper ex)
             {
-                result.Message = ex.Message;
+                result.Message = ex.ActualWebException.Message;
                 result.Error = new ResultError
-                {
-                    Type = "Bad connection",
-                    Code = -1000,
+                {                    
+                    Code = -1,
+                    ErrorSubcode = (int)ex.ActualWebException.Status,
+                    Type = "Http Error"
                 };
             }
             catch (Exception ex)
@@ -148,11 +150,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             }
             catch (WebExceptionWrapper ex)
             {
-                result.Message = ex.Message;
+                result.Message = ex.ActualWebException.Message;
                 result.Error = new ResultError
                 {
-                    Type = "Bad connection",
-                    Code = -1000,
+                    Code = -1,
+                    ErrorSubcode = (int)ex.ActualWebException.Status,
+                    Type = "Http Error"
                 };
             }
             catch (Exception ex)
@@ -204,11 +207,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             }
             catch (WebExceptionWrapper ex)
             {
-                result.Message = ex.Message;
+                result.Message = ex.ActualWebException.Message;
                 result.Error = new ResultError
                 {
-                    Type = "Bad connection",
-                    Code = -1000,
+                    Code = -1,
+                    ErrorSubcode = (int)ex.ActualWebException.Status,
+                    Type = "Http Error"
                 };
             }
             catch (Exception ex)
@@ -250,11 +254,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             }
             catch (WebExceptionWrapper ex)
             {
-                result.Message = ex.Message;
+                result.Message = ex.ActualWebException.Message;
                 result.Error = new ResultError
                 {
-                    Type = "Bad connection",
-                    Code = -1000,
+                    Code = -1,
+                    ErrorSubcode = (int)ex.ActualWebException.Status,
+                    Type = "Http Error"
                 };
             }
             catch (Exception ex)
@@ -281,11 +286,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             }
             catch (WebExceptionWrapper ex)
             {
-                result.Message = ex.Message;
+                result.Message = ex.ActualWebException.Message;
                 result.Error = new ResultError
                 {
-                    Type = "Bad connection",
-                    Code = -1000,
+                    Code = -1,
+                    ErrorSubcode = (int)ex.ActualWebException.Status,
+                    Type = "Http Error"
                 };
             }
             catch (Exception ex)
@@ -328,11 +334,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             }
             catch (WebExceptionWrapper ex)
             {
-                result.Message = ex.Message;
+                result.Message = ex.ActualWebException.Message;
                 result.Error = new ResultError
                 {
-                    Type = "Bad connection",
-                    Code = -1000,
+                    Code = -1,
+                    ErrorSubcode = (int)ex.ActualWebException.Status,
+                    Type = "Http Error"
                 };
             }
             catch (Exception ex)
@@ -405,7 +412,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
 
                         content.Add(imageContent, "filedata", contenFilename);
 
-                        using (var response = await client.PostAsync($"{"https"}://graph.facebook.com/v{_apiVersion}/me/messages?access_token={AccessToken}", content))
+                        using (var response = await client.PostAsync($"https://graph.facebook.com/v{_apiVersion}/me/messages?access_token={AccessToken}", content))
                         {
                             var returnValue = (JObject)JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync());
                             
@@ -420,13 +427,16 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     }
                 }
             }
-            catch (WebExceptionWrapper ex)
+            catch (HttpRequestException ex)
+            when (ex.InnerException is WebException)
             {
-                result.Message = ex.Message;
+                var webException = ex.InnerException as WebException;
+                result.Message = webException.Message;
                 result.Error = new ResultError
                 {
-                    Type = "Bad connection",
-                    Code = -1000,
+                    Code = -1,
+                    ErrorSubcode = (int)webException.Status,
+                    Type = "Http Error"
                 };
             }
             catch (Exception ex)

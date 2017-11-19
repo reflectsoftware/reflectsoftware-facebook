@@ -26,7 +26,7 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.0.8</Version>
+    <Version>2.0.9</Version>
     <RootNamespace>ReflectSoftware.Facebook.Messenger.Client</RootNamespace>
   </PropertyGroup>
 
@@ -41,6 +41,7 @@
 
   <ItemGroup>
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
   </ItemGroup>
 
 </Project>

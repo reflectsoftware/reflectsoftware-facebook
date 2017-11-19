@@ -17,6 +17,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ReflectSoftware.Facebook.Messenger.Client
 {
@@ -84,25 +85,9 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     result.Success = result.Message.Contains("Successfully");
                 }
             }
-            catch (WebExceptionWrapper ex)
-            {
-                result.Message = ex.ActualWebException.Message;
-                result.Error = new ResultError
-                {                    
-                    Code = -1,
-                    ErrorSubcode = (int)ex.ActualWebException.Status,
-                    Type = "Http Error"
-                };
-            }
             catch (Exception ex)
             {
-                result.Message = ex.Message;
-                result.Error = new ResultError
-                {
-                    Code = -1,
-                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
-                    Type = "Client library error"
-                };
+                HandleException(ex, result);
             }
 
             return result;
@@ -154,25 +139,9 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     result.Success = result.Message.Contains("Successfully");
                 }
             }
-            catch (WebExceptionWrapper ex)
-            {
-                result.Message = ex.ActualWebException.Message;
-                result.Error = new ResultError
-                {
-                    Code = -1,
-                    ErrorSubcode = (int)ex.ActualWebException.Status,
-                    Type = "Http Error"
-                };
-            }
             catch (Exception ex)
             {
-                result.Message = ex.Message;
-                result.Error = new ResultError
-                {
-                    Code = -1,
-                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
-                    Type = "Client library error"
-                };
+                HandleException(ex, result);
             }
 
             return result;
@@ -217,25 +186,9 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     result.Success = result.Message.Contains("Successfully");
                 }
             }
-            catch (WebExceptionWrapper ex)
-            {
-                result.Message = ex.ActualWebException.Message;
-                result.Error = new ResultError
-                {
-                    Code = -1,
-                    ErrorSubcode = (int)ex.ActualWebException.Status,
-                    Type = "Http Error"
-                };
-            }
             catch (Exception ex)
             {
-                result.Message = ex.Message;
-                result.Error = new ResultError
-                {
-                    Code = -1,
-                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
-                    Type = "Client library error"
-                };
+                HandleException(ex, result);
             }
 
             return result;
@@ -270,25 +223,9 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     result.Success = true;
                 }   
             }
-            catch (WebExceptionWrapper ex)
-            {
-                result.Message = ex.ActualWebException.Message;
-                result.Error = new ResultError
-                {
-                    Code = -1,
-                    ErrorSubcode = (int)ex.ActualWebException.Status,
-                    Type = "Http Error"
-                };
-            }
             catch (Exception ex)
             {
-                result.Message = ex.Message;
-                result.Error = new ResultError
-                {
-                    Code = -1,
-                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
-                    Type = "Client library error"
-                };
+                HandleException(ex, result);
             }
 
             return result;
@@ -308,25 +245,9 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                 result.Error = CreateResultError(returnValue);
                 result.Success = result.Error == null;
             }
-            catch (WebExceptionWrapper ex)
-            {
-                result.Message = ex.ActualWebException.Message;
-                result.Error = new ResultError
-                {
-                    Code = -1,
-                    ErrorSubcode = (int)ex.ActualWebException.Status,
-                    Type = "Http Error"
-                };
-            }
             catch (Exception ex)
             {
-                result.Message = ex.Message;
-                result.Error = new ResultError
-                {
-                    Code = -1,
-                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
-                    Type = "Client library error"
-                };
+                HandleException(ex, result);
             }
 
             return result;
@@ -362,25 +283,9 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     result.Success = true;
                 }
             }
-            catch (WebExceptionWrapper ex)
-            {
-                result.Message = ex.ActualWebException.Message;
-                result.Error = new ResultError
-                {
-                    Code = -1,
-                    ErrorSubcode = (int)ex.ActualWebException.Status,
-                    Type = "Http Error"
-                };
-            }
             catch (Exception ex)
             {
-                result.Message = ex.Message;
-                result.Error = new ResultError
-                {
-                    Code = -1,
-                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
-                    Type = "Client library error"
-                };
+                HandleException(ex, result);
             }
 
             return result;
@@ -463,27 +368,9 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     }
                 }
             }
-            catch (HttpRequestException ex)
-            when (ex.InnerException is WebException)
-            {
-                var webException = ex.InnerException as WebException;
-                result.Message = webException.Message;
-                result.Error = new ResultError
-                {
-                    Code = -1,
-                    ErrorSubcode = (int)webException.Status,
-                    Type = "Http Error"
-                };
-            }
             catch (Exception ex)
             {
-                result.Message = ex.Message;
-                result.Error = new ResultError
-                {
-                    Code = -1,
-                    ErrorSubcode = (int)HttpStatusCode.InternalServerError,
-                    Type = "Client library error"
-                };
+                HandleException(ex, result);
             }
 
             return result;
@@ -540,6 +427,91 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             }
             return result;
         }
+
+        /// <summary>
+        /// Handles the exception.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
+        /// <param name="result">The result.</param>
+        private void HandleException(Exception ex, Result result)
+        {
+            if (ex is WebExceptionWrapper)
+            {
+                HandleWebException((ex as WebExceptionWrapper).ActualWebException, result);
+                return;
+            }
+
+            if (ex is WebException)
+            {
+                HandleWebException(ex as WebException, result);
+                return;
+            }
+
+            if (ex is HttpException)
+            {
+                var code = (ex as HttpException).GetHttpCode();
+                HandleStatusCode((HttpStatusCode)code, result);
+                return;
+            }
+
+            if (ex is TaskCanceledException)
+            {
+                HandleStatusCode(HttpStatusCode.RequestTimeout, result);
+                return;
+            }
+
+            if (ex is HttpRequestException)
+            {
+                if ((ex as HttpRequestException).InnerException is WebException)
+                {
+                    HandleWebException((ex as HttpRequestException).InnerException as WebException, result);
+                    return;
+                }
+            }
+
+            HandleStatusCode(HttpStatusCode.InternalServerError, result);
+        }
+
+        /// <summary>
+        /// Handles the web exception.
+        /// </summary>
+        /// <param name="ex">The ex.</param>
+        /// <param name="result">The result.</param>
+        private void HandleWebException(WebException ex, Result result)
+        {
+            if (ex.Status == WebExceptionStatus.ProtocolError)
+            {
+                var response = ex.Response as HttpWebResponse;
+                if (response != null)
+                {
+                    HandleStatusCode(response.StatusCode, result);
+                    return;
+                }
+            }
+            else if (ex.Status == WebExceptionStatus.NameResolutionFailure)
+            {
+                HandleStatusCode(HttpStatusCode.BadGateway, result);
+                return;
+            }
+
+            HandleStatusCode(HttpStatusCode.InternalServerError, result);
+        }
+
+        /// <summary>
+        /// Handles the status code.
+        /// </summary>
+        /// <param name="code">The code.</param>
+        /// <param name="result">The result.</param>
+        private void HandleStatusCode(HttpStatusCode code, Result result)
+        {
+            result.Error = new ResultError
+            {
+                Code = -1,
+                ErrorSubcode = (int)code,
+                Type = code.ToString(),
+            };
+        }
+
         #endregion
     }
 }

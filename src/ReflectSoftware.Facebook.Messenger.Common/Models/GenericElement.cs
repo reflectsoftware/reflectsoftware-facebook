@@ -36,6 +36,15 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
         public string ImageUrl { get; set; }
 
         /// <summary>
+        /// Gets or sets the default action.
+        /// </summary>
+        /// <value>
+        /// The default action.
+        /// </value>
+        [JsonProperty("default_action", NullValueHandling = NullValueHandling.Ignore)]
+        public DefaultAction DefaultAction { get; set; }
+
+        /// <summary>
         /// Set of buttons that appear as call-to-actions
         /// Call-to-action items: 3 buttons
         /// </summary>

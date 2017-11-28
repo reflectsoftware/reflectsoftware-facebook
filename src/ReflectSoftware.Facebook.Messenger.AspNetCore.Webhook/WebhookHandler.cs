@@ -18,7 +18,7 @@ namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook
     /// <summary>
     /// https://developers.facebook.com/docs/messenger-platform
     /// </summary>
-    public class WebhookHandler
+    public class WebhookHandler : IWebhookHandler
     {
         public string VerificationToken { get; private set; }
         public string AppSecret { get; private set; }

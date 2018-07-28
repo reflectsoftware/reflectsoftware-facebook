@@ -1,5 +1,5 @@
 ﻿// ReflectSoftware.Facebook
-// Copyright (c) 2017 ReflectSoftware Inc.
+// Copyright (c) 2018 ReflectSoftware Inc.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. 
 
 using Microsoft.AspNetCore.Http;
@@ -20,17 +20,21 @@ namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook
     /// </summary>
     public class WebhookHandler : IWebhookHandler
     {
+        private readonly bool _ignoreSignature;
         public string VerificationToken { get; private set; }
         public string AppSecret { get; private set; }
-
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookHandler"/> class.
+        /// Initializes a new instance of the <see cref="WebhookHandler" /> class.
         /// </summary>
         /// <param name="verificationToken">The verification token.</param>
-        public WebhookHandler(string verificationToken = null, string appSecret = null)
+        /// <param name="appSecret">The application secret.</param>
+        /// <param name="ignoreSignature">if set to <c>true</c> [ignore signature].</param>
+        public WebhookHandler(string verificationToken = null, string appSecret = null, bool ignoreSignature = false)
         {
             VerificationToken = verificationToken;
             AppSecret = appSecret;
+            _ignoreSignature = ignoreSignature;
         }
 
         /// <summary>
@@ -106,7 +110,7 @@ namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook
                 var body = WebHelper.ReadRequestDataAsString(context);
                 var callback = JsonConvert.DeserializeObject<Callback>(body);
 
-                if(AppSecret != null)
+                if(AppSecret != null && _ignoreSignature == false)
                 {
                     var headerSignature = context.Request.Headers["X-Hub-Signature"];
                     result = await ValidateSignatureAsync(headerSignature, body);

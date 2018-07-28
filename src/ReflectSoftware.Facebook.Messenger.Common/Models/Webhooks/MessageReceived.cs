@@ -1,5 +1,5 @@
 ﻿// ReflectSoftware.Facebook
-// Copyright (c) 2017 ReflectSoftware Inc.
+// Copyright (c) 2018 ReflectSoftware Inc.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. 
 
 using Newtonsoft.Json;
@@ -27,6 +27,9 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
         /// </summary>
         [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
         public string Text { get; set; }
+
+        [JsonProperty("sticker_id", NullValueHandling = NullValueHandling.Ignore)]
+        public string StickerId { get; set; }
 
         /// <summary>
         /// Optional custom data provided by the sending app

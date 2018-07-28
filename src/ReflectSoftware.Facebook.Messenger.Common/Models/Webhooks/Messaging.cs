@@ -1,5 +1,5 @@
 ﻿// ReflectSoftware.Facebook
-// Copyright (c) 2017 ReflectSoftware Inc.
+// Copyright (c) 2018 ReflectSoftware Inc.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. 
 
 using Newtonsoft.Json;
@@ -45,7 +45,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks
         public Postback Postback { get; set; }
 
         /// <summary>
-        /// This callback will occur when the Send-to-Messenger plugin has been tapped. The optin.ref parameter is set by the data-ref field on the "Send to Messenger" plugin. This field can be used by the developer to associate a click event on the plugin with a callback.
+        /// This callback will occur when the Send-to-Messenger plug-in has been tapped. The optin.ref parameter is set by the data-ref field on the "Send to Messenger" plugin. This field can be used by the developer to associate a click event on the plugin with a callback.
         /// You can subscribe to this callback by selecting the messaging_optins field when setting up your webhook.
         /// </summary>
         [JsonProperty("optin", NullValueHandling = NullValueHandling.Ignore)]

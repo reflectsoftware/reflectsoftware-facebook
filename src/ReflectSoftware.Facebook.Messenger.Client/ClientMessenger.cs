@@ -1,5 +1,5 @@
 ﻿// ReflectSoftware.Facebook
-// Copyright (c) 2017 ReflectSoftware Inc.
+// Copyright (c) 2018 ReflectSoftware Inc.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. 
 
 using Facebook;
@@ -99,7 +99,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         /// There are certain conditions to seeing the Welcome Screen and the Get Started button:
         /// They are only rendered the first time the user interacts with a the Page on Messenger.
         /// Only admins/developers/testers of the app can see it when the app is in development mode.
-        /// Your app must be subscribed to postbacks on your webhook.
+        /// Your app must be subscribed to post-backs on your webhook.
         /// </summary>
         /// <param name="payload">This data will be sent back to you via webhook.</param>
         /// <returns>

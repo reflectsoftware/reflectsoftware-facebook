@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>A ReflectInsight for Facebook Messenger .NET Core.</Description>
-    <Copyright>Copyright 2017, ReflectSoftware</Copyright>
+    <Copyright>Copyright 2018, ReflectSoftware</Copyright>
     <AssemblyTitle>ReflectSoftware.Facebook.Messenger.Client</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
     <VersionPrefix>1.1.3</VersionPrefix>
@@ -26,13 +26,13 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.1.0</Version>
+    <Version>2.1.1</Version>
     <RootNamespace>ReflectSoftware.Facebook.Messenger.Client</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Facebook" Version="7.0.6" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
   <ItemGroup>

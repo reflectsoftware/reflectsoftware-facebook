@@ -66,7 +66,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                         setting_type = "greeting",
                         greeting = new
                         {
-                            text = text
+                            text
                         }
                     });
                 }
@@ -119,7 +119,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                         thread_state = "new_thread",
                         call_to_actions = new []
                         {
-                            new { payload = payload }
+                            new { payload }
                         }
                     });
                 }
@@ -272,7 +272,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                         id = userId
                     },
                     notification_type = notificationType.GetJsonPropertyName(),
-                    message = message
+                    message
                 });
 
                 result.Error = CreateResultError(returnValue);
@@ -330,6 +330,12 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     contenFilename = $"{contenFilename};type={fileType}";
                     attachment = new AudioAttachment();
                     break;
+
+                default:
+                    fileType = "application/octet-stream";
+                    contenFilename = $"{contenFilename};type={fileType}";
+                    attachment = new FileAttachment();
+                    break;
             }
 
             var result = new MessageResult();
@@ -378,7 +384,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
 
         /// <summary>
         /// The profile API can be used to query more information about the user, and personalize the experience further. 
-        /// This API is only available after the user initiated the conversation by sending a message or by interacting with a Web Plugin.
+        /// This API is only available after the user initiated the conversation by sending a message or by interacting with a Web Plug-in.
         /// </summary>
         /// <param name="userId">User identification</param>
         /// <returns></returns>

@@ -5,8 +5,7 @@
     <AssemblyTitle>ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
     <VersionPrefix>1.1.3</VersionPrefix>
-    <Authors>ReflectSoftware Inc.</Authors>
-    <TargetFramework>net461</TargetFramework>
+    <Authors>ReflectSoftware Inc.</Authors>    
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook</AssemblyName>
     <AssemblyOriginatorKeyFile>../../key.snk</AssemblyOriginatorKeyFile>
@@ -25,7 +24,10 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.1.1</Version>    
+    <Version>2.1.2</Version>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <AssemblyVersion>2.1.2.0</AssemblyVersion>
+    <FileVersion>2.1.2.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

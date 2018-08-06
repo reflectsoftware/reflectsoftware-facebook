@@ -16,7 +16,7 @@ To install the ReflectSoftware Facebook Messenger, run the following command in 
 
 
 
-### Usage - Webhook for AspNetCore 2.0.0
+### Usage - Webhook for .NET Core
 
 ```powershell
 Install-Package ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook
@@ -151,7 +151,7 @@ namespace WebApiSample.AspNetCore.Controllers
 
 
 
-Copyright &copy; 2017 ReflectSoftware Inc. - Provided under the [Apache License, Version 2.0](http://apache.org/licenses/LICENSE-2.0.html).
+Copyright &copy; 2018 ReflectSoftware Inc. - Provided under the [Apache License, Version 2.0](http://apache.org/licenses/LICENSE-2.0.html).
 
 I like to give recognition to the following repos for their awesome work: 
 

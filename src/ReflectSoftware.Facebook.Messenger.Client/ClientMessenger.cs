@@ -297,46 +297,33 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         /// <param name="userId">The user identifier.</param>
         /// <param name="stream">The stream.</param>
         /// <param name="filename">The filename.</param>
+        /// <param name="mimeType">Type of the MIME.</param>
         /// <param name="type">The type.</param>
         /// <returns></returns>
-        public async Task<MessageResult> SendAttachmentAsync(string userId, Stream stream, string filename, string type = "file")
+        public async Task<MessageResult> SendAttachmentAsync(string userId, Stream stream, string filename, string mimeType, string type = "file")
         {            
-            var fileType = string.Empty;
-            var contenFilename = $"@/tmp/{filename}";
-            var attachment = (new FileAttachment() as Attachment);
+            var attachment = (Attachment)null;
 
             switch (type)
             {
                 case "image":
-                    var ext = Path.GetExtension(filename).Replace(".", string.Empty);
-                    if(ext.ToLower() == "jpg")
-                    {
-                        ext = "jpeg";
-                    }
-
-                    fileType = $"image/{ext}";
-                    contenFilename = $"{contenFilename};type={fileType}";
-                    attachment = new ImageAttachment();
+                    attachment = new ImageAttachment();                    
                     break;
 
                 case "video":
-                    fileType = "video/mp4";
-                    contenFilename = $"{contenFilename};type={fileType}";
                     attachment = new VideoAttachment();
                     break;
 
                 case "audio":
-                    fileType = "audio/mp3";
-                    contenFilename = $"{contenFilename};type={fileType}";
                     attachment = new AudioAttachment();
                     break;
 
                 default:
-                    fileType = "application/octet-stream";
-                    contenFilename = $"{contenFilename};type={fileType}";
                     attachment = new FileAttachment();
                     break;
             }
+
+            (attachment as Attachment<MediaPayload>).Payload.IsReusable = true;
 
             var result = new MessageResult();
             try
@@ -351,13 +338,10 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                         content.Add(new StringContent(recipient), "recipient");
                         content.Add(new StringContent(message), "message");
 
-                        var imageContent = new StreamContent(stream);
-                        if (!string.IsNullOrWhiteSpace(fileType))
-                        {
-                            imageContent.Headers.ContentType = MediaTypeHeaderValue.Parse(fileType);
-                        }
+                        var fileContent = new StreamContent(stream);
+                        fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(mimeType);
 
-                        content.Add(imageContent, "filedata", contenFilename);
+                        content.Add(fileContent, "filedata", filename);
 
                         using (var response = await client.PostAsync($"https://graph.facebook.com/v{_apiVersion}/me/messages?access_token={AccessToken}", content))
                         {
@@ -368,6 +352,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                             {
                                 result.RecipientId = returnValue.Value<string>("recipient_id");
                                 result.MessageId = returnValue.Value<string>("message_id");
+                                result.AttachmentId = returnValue.Value<string>("attachment_id");
                                 result.Success = true;
                             }
                         }

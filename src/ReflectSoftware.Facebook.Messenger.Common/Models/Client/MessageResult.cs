@@ -13,5 +13,8 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models.Client
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string MessageId { get; set; }
+
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string AttachmentId { get; set; }
     }
 }

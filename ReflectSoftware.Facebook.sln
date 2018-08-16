@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectSoftware.Facebook.Me
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectSoftware.Facebook.Messenger.Common", "src\ReflectSoftware.Facebook.Messenger.Common\ReflectSoftware.Facebook.Messenger.Common.csproj", "{01E7AE57-068D-4F5A-B141-4A01CDB74F52}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. test harness", "04. test harness", "{CAD3C16E-F474-4046-8E8F-3D0678251372}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHarness", "test-harness\TestHarness\TestHarness.csproj", "{BD8D199C-C781-4439-9F41-6CCA93C333D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,10 @@ Global
 		{01E7AE57-068D-4F5A-B141-4A01CDB74F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01E7AE57-068D-4F5A-B141-4A01CDB74F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01E7AE57-068D-4F5A-B141-4A01CDB74F52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD8D199C-C781-4439-9F41-6CCA93C333D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD8D199C-C781-4439-9F41-6CCA93C333D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD8D199C-C781-4439-9F41-6CCA93C333D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD8D199C-C781-4439-9F41-6CCA93C333D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,5 +62,9 @@ Global
 		{353987F0-CC4F-4ED9-8803-16E515D49A67} = {9DB65601-A628-4E1B-A51E-619119068806}
 		{DA56834D-5F42-4DB4-B000-668A757B02F2} = {25FE0F58-B25F-4164-821F-B754C13F0F52}
 		{01E7AE57-068D-4F5A-B141-4A01CDB74F52} = {25FE0F58-B25F-4164-821F-B754C13F0F52}
+		{BD8D199C-C781-4439-9F41-6CCA93C333D8} = {CAD3C16E-F474-4046-8E8F-3D0678251372}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81FD01D3-1F85-4600-8C42-B1C341697101}
 	EndGlobalSection
 EndGlobal

@@ -1,6 +1,6 @@
 # ReflectSoftware.Facebook
 
-[![Build status](https://ci.appveyor.com/api/projects/status/0ftxpw3dne25ncra?svg=true)](https://ci.appveyor.com/project/reflectsoftware/reflectsoftware-facebook)
+
 [![Stars](https://img.shields.io/github/stars/reflectsoftware/reflectsoftware-facebook.svg)](https://github.com/reflectsoftware/reflectsoftware-facebook/stargazers) 
 [![NuGet Version](http://img.shields.io/nuget/v/Reflectsoftware.Facebook.Messenger.AspNetCore.Webhook.svg?style=flat)](https://www.nuget.org/packages/ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook/)
 

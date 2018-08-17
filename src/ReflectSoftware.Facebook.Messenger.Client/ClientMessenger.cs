@@ -330,6 +330,8 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             {
                 using (var client = new HttpClient())
                 {
+                    client.Timeout = TimeSpan.FromMinutes(5);
+
                     using (var content = new MultipartFormDataContent())
                     {
                         var recipient = JsonConvert.SerializeObject(new Identity(userId));
@@ -345,15 +347,27 @@ namespace ReflectSoftware.Facebook.Messenger.Client
 
                         using (var response = await client.PostAsync($"https://graph.facebook.com/v{_apiVersion}/me/messages?access_token={AccessToken}", content))
                         {
-                            var returnValue = (JObject)JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync());
-                            
-                            result.Error = CreateResultError(returnValue);
-                            if (result.Error == null)
+                            if (response.StatusCode != HttpStatusCode.OK)
                             {
-                                result.RecipientId = returnValue.Value<string>("recipient_id");
-                                result.MessageId = returnValue.Value<string>("message_id");
-                                result.AttachmentId = returnValue.Value<string>("attachment_id");
-                                result.Success = true;
+                                result.Success = false;
+                                result.Error = new ResultError
+                                {
+                                    Code = -1,
+                                    ErrorSubcode = (int)response.StatusCode,
+                                    Message = response.ReasonPhrase ?? response.StatusCode.ToString(),
+                                };
+                            }
+                            else
+                            {
+                                var returnValue = (JObject)JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync());
+                                result.Error = CreateResultError(returnValue);
+                                if (result.Error == null)
+                                {
+                                    result.RecipientId = returnValue.Value<string>("recipient_id");
+                                    result.MessageId = returnValue.Value<string>("message_id");
+                                    result.AttachmentId = returnValue.Value<string>("attachment_id");
+                                    result.Success = true;
+                                }
                             }
                         }
                     }
@@ -407,7 +421,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             if (value.Property("error") != null)
             {
                 var error = (JObject)value.Property("error").Value;
-                result = new ResultError()
+                result = new ResultError
                 {
                     Message = error.Value<string>("message"),
                     Code = error.Value<int>("code"),

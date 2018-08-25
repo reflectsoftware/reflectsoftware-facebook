@@ -347,7 +347,8 @@ namespace ReflectSoftware.Facebook.Messenger.Client
 
                         using (var response = await client.PostAsync($"https://graph.facebook.com/v{_apiVersion}/me/messages?access_token={AccessToken}", content))
                         {
-                            if (response.StatusCode != HttpStatusCode.OK)
+                            if (response.StatusCode != HttpStatusCode.OK
+                            && response.StatusCode != HttpStatusCode.BadRequest)
                             {
                                 result.Success = false;
                                 result.Error = new ResultError

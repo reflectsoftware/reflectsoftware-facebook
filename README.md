@@ -10,9 +10,9 @@
 To install the ReflectSoftware Facebook Messenger, run the following command in the Package Manager Console:
 
 
-**Package** - [ReflectSoftware.Facebook.Messenger.Common](https://www.nuget.org/packages/ReflectSoftware.Facebook.Messenger.Common/) | .NET Standard 4.6.1  
-**Package** - [ReflectSoftware.Facebook.Messenger.Client](https://www.nuget.org/packages/ReflectSoftware.Facebook.Messenger.Client/) | .NET Standard 4.6.1  
-**Package** - [ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook](https://www.nuget.org/packages/ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook/) | .NET Standard 4.6.1  
+**Package** - [ReflectSoftware.Facebook.Messenger.Common](https://www.nuget.org/packages/ReflectSoftware.Facebook.Messenger.Common/) | .NET Standard 2.0 
+**Package** - [ReflectSoftware.Facebook.Messenger.Client](https://www.nuget.org/packages/ReflectSoftware.Facebook.Messenger.Client/) | .NET Standard 2.0
+**Package** - [ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook](https://www.nuget.org/packages/ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook/) | .NET Standard 2.0
 
 
 
@@ -151,7 +151,7 @@ namespace WebApiSample.AspNetCore.Controllers
 
 
 
-Copyright &copy; 2018 ReflectSoftware Inc. - Provided under the [Apache License, Version 2.0](http://apache.org/licenses/LICENSE-2.0.html).
+Copyright &copy; 2019 ReflectSoftware Inc. - Provided under the [Apache License, Version 2.0](http://apache.org/licenses/LICENSE-2.0.html).
 
 I like to give recognition to the following repos for their awesome work: 
 

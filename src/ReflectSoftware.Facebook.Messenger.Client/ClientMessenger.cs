@@ -1,8 +1,7 @@
 ﻿// ReflectSoftware.Facebook
-// Copyright (c) 2018 ReflectSoftware Inc.
+// Copyright (c) 2019 ReflectSoftware Inc.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. 
 
-using Facebook;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ReflectSoftware.Facebook.Messenger.Common.Enums;
@@ -15,33 +14,127 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace ReflectSoftware.Facebook.Messenger.Client
 {
     /// <summary>
     /// https://developers.facebook.com/docs/messenger-platform
     /// </summary>
-    public class ClientMessenger : FacebookClient
+    public class ClientMessenger
     {
         private readonly string _apiVersion;
-        private readonly JsonSerializerSettings _jsonSerializerSettings;
+        private readonly string _accessToken;
 
         #region Constructors      
         /// <summary>
-        /// Initializes a new instance of the <see cref="ClientMessenger"/> class.
+        /// Initializes a new instance of the <see cref="ClientMessenger" /> class.
         /// </summary>
         /// <param name="accessToken">The facebook access_token.</param>
-        public ClientMessenger(string accessToken, string version = "2.8") : base(accessToken)
+        /// <param name="version">The version.</param>
+        public ClientMessenger(string accessToken, string version = "2.8") // : base(accessToken)
         {
+            _accessToken = accessToken;
             _apiVersion = version;
-
-            SetJsonSerializers();
-            _jsonSerializerSettings = new JsonSerializerSettings();
         }
         #endregion Constructors
+
+        /// <summary>
+        /// Posts the task asynchronous.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns></returns>
+        protected async Task<object> PostTaskAsync(string path, object parameters)
+        {
+            var content = (StringContent)null;
+
+            if (parameters != null)
+            {
+                var body = JsonConvert.SerializeObject(parameters);
+                content = new StringContent(body, Encoding.UTF8, "application/json");
+            }
+
+            using (var client = new HttpClient())
+            {
+                client.Timeout = TimeSpan.FromSeconds(10);
+                
+                using (var response = await client.PostAsync($"https://graph.facebook.com/v{_apiVersion}/{path}?access_token={_accessToken}", content))
+                {
+                    var responseData = await response.Content.ReadAsStringAsync();
+                    var responseObject = JObject.Parse(responseData);
+
+                    return responseObject;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Deletes the task asynchronous.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns></returns>
+        protected async Task<object> DeleteTaskAsync(string path, object parameters, CancellationToken cancellationToken)
+        {
+            var content = (StringContent)null;
+
+            if (parameters != null)
+            {
+                var body = JsonConvert.SerializeObject(parameters);
+                content = new StringContent(body, Encoding.UTF8, "application/json");
+            }
+
+            using (var client = new HttpClient())
+            {
+                client.Timeout = TimeSpan.FromSeconds(10);
+
+                var request = new HttpRequestMessage(System.Net.Http.HttpMethod.Delete, $"https://graph.facebook.com/v{_apiVersion}/{path}?access_token={_accessToken}")
+                {
+                    Content = content
+                };
+
+                using (var response = await client.SendAsync(request, cancellationToken))
+                {
+                    var responseData = await response.Content.ReadAsStringAsync();
+                    var responseObject = JObject.Parse(responseData);
+
+                    return responseObject;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the task asynchronous.
+        /// </summary>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns></returns>
+        protected async Task<TResult> GetTaskAsync<TResult>(object parameters)
+        {
+            using (var client = new HttpClient())
+            {
+                client.Timeout = TimeSpan.FromSeconds(10);
+
+                try
+                {
+                    var response = await client.GetStringAsync($"https://graph.facebook.com/{parameters}&access_token={_accessToken}");
+                    if (string.IsNullOrWhiteSpace(response) == false)
+                    {
+                        var data = JsonConvert.DeserializeObject<TResult>(response);
+                        return data;
+                    }
+                }
+                catch(Exception)
+                {
+                }
+
+                return default(TResult);
+            }
+        }
 
         #region Methods
         /// <summary>
@@ -212,7 +305,6 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     {
                         id = userId
                     },
-
                     sender_action = action.GetJsonPropertyName()
                 });
 
@@ -222,28 +314,6 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     result.Message = returnValue.Value<string>("recipient_id");
                     result.Success = true;
                 }   
-            }
-            catch (Exception ex)
-            {
-                HandleException(ex, result);
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        /// Subscribe an app to get updates for a page. You can do this in the Webhooks section under the Messenger Tab.
-        /// </summary>
-        /// <returns></returns>
-        public async Task<Result> SubscribedAppsAsync()
-        {
-            var result = new Result();
-            try
-            {
-                var returnValue = (JObject)await PostTaskAsync("me/subscribed_apps", null);
-
-                result.Error = CreateResultError(returnValue);
-                result.Success = result.Error == null;
             }
             catch (Exception ex)
             {
@@ -345,7 +415,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
 
                         content.Add(fileContent, "filedata", filename);
 
-                        using (var response = await client.PostAsync($"https://graph.facebook.com/v{_apiVersion}/me/messages?access_token={AccessToken}", content))
+                        using (var response = await client.PostAsync($"https://graph.facebook.com/v{_apiVersion}/me/messages?access_token={_accessToken}", content))
                         {
                             if (response.StatusCode != HttpStatusCode.OK
                             && response.StatusCode != HttpStatusCode.BadRequest)
@@ -390,27 +460,11 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         /// <returns></returns>
         public async Task<UserProfile> GetUserProfileAsync(string userId)
         {
-            return await GetTaskAsync<UserProfile>($"{userId}?fields=first_name,last_name,profile_pic,locale,timezone,gender,is_payment_enabled");
+            return await GetTaskAsync<UserProfile>($"{userId}?fields=first_name,last_name,profile_pic,locale,timezone,gender");
         }
         #endregion
 
         #region Methods Private
-        /// <summary>
-        /// Sets the json serializer.
-        /// </summary>
-        private void SetJsonSerializers()
-        {
-            SetJsonSerializers((obj) =>
-            {
-                var value = JsonConvert.SerializeObject(obj, _jsonSerializerSettings);
-                return value;
-            }, 
-            (value, type) =>
-            {
-                return type == null? JsonConvert.DeserializeObject(value, _jsonSerializerSettings) : JsonConvert.DeserializeObject(value, type, _jsonSerializerSettings);
-            });
-        }
-
         /// <summary>
         /// Creates the result error.
         /// </summary>
@@ -441,24 +495,18 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         /// <param name="result">The result.</param>
         private void HandleException(Exception ex, Result result)
         {
-            if (ex is WebExceptionWrapper)
-            {
-                HandleWebException((ex as WebExceptionWrapper).ActualWebException, result);
-                return;
-            }
-
             if (ex is WebException)
             {
                 HandleWebException(ex as WebException, result);
                 return;
             }
 
-            if (ex is HttpException)
-            {
-                var code = (ex as HttpException).GetHttpCode();
-                HandleStatusCode((HttpStatusCode)code, result);
-                return;
-            }
+            //if (ex is HttpException)
+            //{
+            //    var code = (ex as HttpException).GetHttpCode();
+            //    HandleStatusCode((HttpStatusCode)code, result);
+            //    return;
+            //}
 
             if (ex is TaskCanceledException)
             {
@@ -487,8 +535,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         {
             if (ex.Status == WebExceptionStatus.ProtocolError)
             {
-                var response = ex.Response as HttpWebResponse;
-                if (response != null)
+                if (ex.Response is HttpWebResponse response)
                 {
                     HandleStatusCode(response.StatusCode, result);
                     return;
@@ -517,7 +564,6 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                 Type = code.ToString(),
             };
         }
-
         #endregion
     }
 }

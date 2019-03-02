@@ -15,9 +15,8 @@
     <PackageId>ReflectSoftware.Facebook.Messenger.Common</PackageId>
     <PackageTags>.NET Core;Facebook Messenger;Webhook;Send API;ReflectSoftware;WebAPI</PackageTags>
     <PackageIconUrl>http://reflectsoftware.com/images/ReflectInsight-Element-256.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/ReflectSoftware/reflectsoftware-facebook</PackageProjectUrl>
-    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/ReflectSoftware/reflectsoftware-facebook</PackageProjectUrl>    
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://https://github.com/ReflectSoftware/reflectsoftware-facebook</RepositoryUrl>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
@@ -25,16 +24,16 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.1.6</Version>
+    <Version>2.7.0</Version>
     <RootNamespace>ReflectSoftware.Facebook.Messenger.Common</RootNamespace>
-    <AssemblyVersion>2.1.6.0</AssemblyVersion>
+    <AssemblyVersion>2.7.0.0</AssemblyVersion>
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
-    <FileVersion>2.1.6.0</FileVersion>
+    <FileVersion>2.7.0.0</FileVersion>
 
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
 </Project>

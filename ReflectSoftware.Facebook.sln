@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Solution Items", "01. Solution Items", "{1022C351-7255-4314-9756-58D352F94F23}"
 	ProjectSection(SolutionItems) = preProject
@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectSoftware.Facebook.Me
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. test harness", "04. test harness", "{CAD3C16E-F474-4046-8E8F-3D0678251372}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHarness", "test-harness\TestHarness\TestHarness.csproj", "{BD8D199C-C781-4439-9F41-6CCA93C333D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestHarness", "test-harness\TestHarness\TestHarness.csproj", "{BD8D199C-C781-4439-9F41-6CCA93C333D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

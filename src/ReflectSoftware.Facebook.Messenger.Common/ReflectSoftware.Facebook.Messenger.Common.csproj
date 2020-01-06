@@ -24,12 +24,16 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.7.0</Version>
+    <Version>2.8.0</Version>
     <RootNamespace>ReflectSoftware.Facebook.Messenger.Common</RootNamespace>
-    <AssemblyVersion>2.7.0.0</AssemblyVersion>    
-    <FileVersion>2.7.0.0</FileVersion>
+    <AssemblyVersion>2.8.0.0</AssemblyVersion>    
+    <FileVersion>2.8.0.0</FileVersion>
 
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\header\ReflectSoftware.Facebook.licenseheader" Link="ReflectSoftware.Facebook.licenseheader" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />

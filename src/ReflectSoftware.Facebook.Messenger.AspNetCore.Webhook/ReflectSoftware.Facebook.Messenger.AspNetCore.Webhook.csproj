@@ -23,10 +23,13 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.7.0</Version>    
-    <AssemblyVersion>2.7.0.0</AssemblyVersion>
-    <FileVersion>2.7.0.0</FileVersion>
+    <Version>2.8.0</Version>    
+    <AssemblyVersion>2.8.0.0</AssemblyVersion>
+    <FileVersion>2.8.0.0</FileVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\header\ReflectSoftware.Facebook.licenseheader" Link="ReflectSoftware.Facebook.licenseheader" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />

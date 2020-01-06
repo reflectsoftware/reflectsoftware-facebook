@@ -6,6 +6,7 @@ namespace WebApiSample.AspNetCore
 {
     public class Program
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "none")]
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()

@@ -19,18 +19,8 @@ namespace WebApiSample.AspNetCore.Controllers
     [Route("v1/inbound/customer/[controller]")]
     public class MessengerController : Controller
     {
-        private static readonly HashSet<string> _FirstTimeCaller;
-
         private readonly WebhookHandler _webHookHandler;
         private readonly ClientMessenger _clientMessenger;
-
-        /// <summary>
-        /// Initializes the <see cref="MessengerController"/> class.
-        /// </summary>
-        static MessengerController()
-        {
-            _FirstTimeCaller = new HashSet<string>();
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MessengerController"/> class.
@@ -47,9 +37,8 @@ namespace WebApiSample.AspNetCore.Controllers
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
         [AllowAnonymous]
-        [HttpPost, HttpGet]
-        [Route("{id}")]
-        public async Task<IActionResult> ReceiveAsync(string id)
+        [HttpPost, HttpGet]        
+        public async Task<IActionResult> ReceiveAsync()
         {
             var result = await FacebookAsync();
             return result ?? BadRequest();

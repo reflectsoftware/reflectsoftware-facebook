@@ -24,10 +24,10 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.8.2</Version>
+    <Version>2.8.3</Version>
     <RootNamespace>ReflectSoftware.Facebook.Messenger.Client</RootNamespace>    
-    <AssemblyVersion>2.8.2.0</AssemblyVersion>
-    <FileVersion>2.8.2.0</FileVersion>    
+    <AssemblyVersion>2.8.3.0</AssemblyVersion>
+    <FileVersion>2.8.3.0</FileVersion>    
   </PropertyGroup>
 
   <ItemGroup>

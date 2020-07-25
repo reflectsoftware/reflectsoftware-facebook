@@ -16,10 +16,10 @@ namespace WebApiSample.AspNetCore.Controllers
     /// 
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
-    [Route("v1/inbound/customer/[controller]")]
+    [Route("inbound/customer/v1/[controller]")]
     public class MessengerController : Controller
     {
-        private readonly WebhookHandler _webHookHandler;
+        private readonly MessengerWebhookHandler _webHookHandler;
         private readonly ClientMessenger _clientMessenger;
 
         /// <summary>
@@ -27,8 +27,8 @@ namespace WebApiSample.AspNetCore.Controllers
         /// </summary>
         public MessengerController()
         {
-            _webHookHandler = new WebhookHandler("channelsis", "79faa9a8710333289b595925e5fb7e72");            
-            _clientMessenger = new ClientMessenger("EAAa2PqNTZABwBAAXOwwbAbZCaUFqU3KTeiZC1LCJjOr2ZAZB32bXx0p9gMqWedLJsse4xW8BXMatyYrbvIp0ICLiDmRVxM8Yp6cHPZATYjDsz0qZCmhhZAHJNeYpkVNMuEKjIw9goQUHgI54YOouZBzJa80fZCYoxtgJaWVYyQEKOhawZDZD");            
+            _webHookHandler = new MessengerWebhookHandler("Hubster.io", "29ae47721eb94a7b41b9d2f8271cc91a");            
+            _clientMessenger = new ClientMessenger("EAAeZCcIjFqGABADu97rZA8ddjEetYM6MJ2Lj6dRrkZCudUEBY31MeCKcQYIe8ZCufeR2O1UMjoK0ttkN89AZCU20yx0PBZACYLJxKEahYM6uK8P8V8h3DUQa4TTnckWZA3NLvsIKFtVN6ZB4c1MzSPeChZCZCXAZBn26zdiNzDbKI0ZCGgZDZD");            
         }
 
         /// <summary>
@@ -64,14 +64,17 @@ namespace WebApiSample.AspNetCore.Controllers
                     /// You can subscribe to this callback by selecting the message field when setting up your webhook.
 
                     var userProfile = await _clientMessenger.GetUserProfileAsync(messaging.Sender.Id);
-                    RILogManager.Default.SendJSON("userProfile", userProfile);
-
-                    var result = await _clientMessenger.SendMessageAsync(messaging.Sender.Id, new TextMessage
+                    if (userProfile != null)
                     {
-                        Text = $"Hi, {userProfile.Firstname}. An agent will respond to your question shortly."
-                    });
+                        RILogManager.Default.SendJSON("userProfile", userProfile);
 
-                    RILogManager.Default.SendJSON("Results", new[] { result });
+                        var result = await _clientMessenger.SendMessageAsync(messaging.Sender.Id, new TextMessage
+                        {
+                            Text = $"Hi, {userProfile.Firstname}. An agent will respond to your question shortly."
+                        });
+
+                        RILogManager.Default.SendJSON("Results", new[] { result });
+                    }
                 }
                 else if (messaging.Postback != null)
                 {

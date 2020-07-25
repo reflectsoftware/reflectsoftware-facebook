@@ -19,8 +19,7 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
             Type = type;
         }        
     }
-
-    //public class Attachment<T> : IAttachment where T: IPayload
+    
     public class Attachment<T> : Attachment where T : Payload
     {
         public Attachment(string type) : base(type)

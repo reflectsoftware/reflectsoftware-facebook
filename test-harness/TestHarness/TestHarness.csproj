@@ -6,6 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CallMeButton.cs" />
+    <Compile Remove="LogInButton.cs" />
+    <Compile Remove="LogOutButton.cs" />
+    <Compile Remove="PostbackButton.cs" />
+    <Compile Remove="UrlButton.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\src\ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook\ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook.csproj" />
     <ProjectReference Include="..\..\src\ReflectSoftware.Facebook.Messenger.Client\ReflectSoftware.Facebook.Messenger.Client.csproj" />
     <ProjectReference Include="..\..\src\ReflectSoftware.Facebook.Messenger.Common\ReflectSoftware.Facebook.Messenger.Common.csproj" />

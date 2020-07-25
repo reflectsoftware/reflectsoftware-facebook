@@ -13,10 +13,11 @@ namespace ReflectSoftware.Facebook.Messenger.Common.Models
 
         }
 
-        public TextQuickReply(string title, string payload) : this()
+        public TextQuickReply(string title, string payload, string imageUrl = null) : this()
         {
             Title = title;
             Payload = payload;
+            ImageUrl = imageUrl;
         }
 
         /// <summary>

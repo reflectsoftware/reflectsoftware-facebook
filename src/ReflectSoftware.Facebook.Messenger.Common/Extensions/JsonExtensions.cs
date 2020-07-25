@@ -8,14 +8,22 @@ using System.Linq;
 
 namespace ReflectSoftware.Facebook.Messenger.Common.Extensions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class JsonExtensions
     {
-        public static string GetJsonPropertyName(this Enum e)
+        /// <summary>
+        /// Gets the name of the json property.
+        /// </summary>
+        /// <param name="enumValue">The e.</param>
+        /// <returns></returns>
+        public static string GetJsonPropertyName(this Enum enumValue)
         {
-            var member = e.GetType().GetMember(e.ToString()).First();
+            var member = enumValue.GetType().GetMember(enumValue.ToString()).First();
             var attribute = (JsonPropertyAttribute)member.GetCustomAttributes(typeof(JsonPropertyAttribute), false).FirstOrDefault();
 
-            return attribute != null ? attribute.PropertyName : e.ToString();
+            return attribute != null ? attribute.PropertyName : enumValue.ToString();
         }
     }
 }

@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 
 namespace ReflectSoftware.Facebook.Messenger.Common.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Button
     {
         public Button(string type)

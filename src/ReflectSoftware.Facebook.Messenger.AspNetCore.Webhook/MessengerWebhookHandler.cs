@@ -18,19 +18,19 @@ namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook
     /// <summary>
     /// https://developers.facebook.com/docs/messenger-platform
     /// </summary>
-    public class WebhookHandler : IWebhookHandler
+    public class MessengerWebhookHandler : IMessengerWebhookHandler
     {
         private readonly bool _ignoreSignature;
         public string VerificationToken { get; private set; }
         public string AppSecret { get; private set; }
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookHandler" /> class.
+        /// Initializes a new instance of the <see cref="MessengerWebhookHandler" /> class.
         /// </summary>
         /// <param name="verificationToken">The verification token.</param>
         /// <param name="appSecret">The application secret.</param>
         /// <param name="ignoreSignature">if set to <c>true</c> [ignore signature].</param>
-        public WebhookHandler(string verificationToken = null, string appSecret = null, bool ignoreSignature = false)
+        public MessengerWebhookHandler(string verificationToken = null, string appSecret = null, bool ignoreSignature = false)
         {
             VerificationToken = verificationToken;
             AppSecret = appSecret;

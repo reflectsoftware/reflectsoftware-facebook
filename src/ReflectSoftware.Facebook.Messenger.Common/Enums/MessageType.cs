@@ -6,15 +6,15 @@ using Newtonsoft.Json;
 
 namespace ReflectSoftware.Facebook.Messenger.Common.Enums
 {
-    public enum NotificationType
-    {
-        [JsonProperty("REGULAR")]
-        Regular = 0,
+    public enum MessageType
+    {        
+        [JsonProperty("RESPONSE")]
+        Response = 0,
 
-        [JsonProperty("SILENT_PUSH")]
-        SilentPush,
+        [JsonProperty("UPDATE")]
+        Update,
 
-        [JsonProperty("NO_PUSH")]
-        NoPush
+        [JsonProperty("MESSAGE_TAG")]
+        MessageTag
     }
 }

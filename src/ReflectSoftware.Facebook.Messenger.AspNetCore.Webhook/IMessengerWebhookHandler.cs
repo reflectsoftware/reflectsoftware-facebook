@@ -10,7 +10,7 @@ using ReflectSoftware.Facebook.Messenger.Common.Models.Webhooks;
 
 namespace ReflectSoftware.Facebook.Messenger.AspNetCore.Webhook
 {
-    public interface IWebhookHandler
+    public interface IMessengerWebhookHandler
     {
         string AppSecret { get; }
         string VerificationToken { get; }

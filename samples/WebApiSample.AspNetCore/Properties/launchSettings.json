@@ -8,14 +8,9 @@
     }
   },
   "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",      
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
     "WebApplication": {
-      "commandName": "Project",      
+      "commandName": "Project",
+      "applicationUrl": "http://localhost:10599/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

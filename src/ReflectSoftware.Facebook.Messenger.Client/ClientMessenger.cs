@@ -34,7 +34,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         /// </summary>
         /// <param name="accessToken">The facebook access_token.</param>
         /// <param name="version">The version.</param>
-        public ClientMessenger(string accessToken, string version = "2.8") // : base(accessToken)
+        public ClientMessenger(string accessToken, string version = "7.0") 
         {
             _accessToken = accessToken;
             _apiVersion = version;
@@ -92,7 +92,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
             {
                 client.Timeout = TimeSpan.FromSeconds(10);
 
-                var request = new HttpRequestMessage(System.Net.Http.HttpMethod.Delete, $"https://graph.facebook.com/v{_apiVersion}/{path}?access_token={_accessToken}")
+                var request = new HttpRequestMessage(HttpMethod.Delete, $"https://graph.facebook.com/v{_apiVersion}/{path}?access_token={_accessToken}")
                 {
                     Content = content
                 };
@@ -329,8 +329,13 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         /// <param name="userId">User identification</param>
         /// <param name="message">Message object</param>
         /// <param name="notificationType">Push notification type: REGULAR, SILENT_PUSH, NO_PUSH</param>
+        /// <param name="messageType">Type of the message: RESPONSE, UPDATE, MESSAGE_TAG</param>
+        /// <param name="messageTag">The message tag.</param>
         /// <returns></returns>
-        public async Task<MessageResult> SendMessageAsync(string userId, MessageSent message, NotificationType notificationType = NotificationType.Regular)
+        public async Task<MessageResult> SendMessageAsync(string userId, MessageSent message, 
+            NotificationType notificationType = NotificationType.Regular,
+            MessageType? messageType = null,
+            MessageTag? messageTag = null)
         {
             var result = new MessageResult();
             try
@@ -341,6 +346,8 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     {
                         id = userId
                     },
+                    tag = messageTag?.GetJsonPropertyName(),
+                    messaging_type = messageType?.GetJsonPropertyName(),
                     notification_type = notificationType.GetJsonPropertyName(),
                     message
                 });
@@ -362,6 +369,37 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         }
 
         /// <summary>
+        /// Gets the json rendered asynchronous.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="notificationType">Type of the notification.</param>
+        /// <param name="messageType">Type of the message.</param>
+        /// <param name="messageTag">The message tag.</param>
+        /// <returns></returns>
+        public Task<string> GetJSONRenderedAsync(string userId, MessageSent message,
+            NotificationType notificationType = NotificationType.Regular,
+            MessageType? messageType = null,
+            MessageTag? messageTag = null)
+        {
+            var package = new
+            {
+                recipient = new
+                {
+                    id = userId
+                },
+                tag = messageTag?.GetJsonPropertyName(),
+                messaging_type = messageType?.GetJsonPropertyName(),
+                notification_type = notificationType.GetJsonPropertyName(),
+                message
+            };
+
+            var result = JsonConvert.SerializeObject(package, Formatting.Indented);
+            return Task.FromResult(result);
+        }
+
+
+        /// <summary>
         /// Sends the attachment asynchronous.
         /// </summary>
         /// <param name="userId">The user identifier.</param>
@@ -370,7 +408,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         /// <param name="mimeType">Type of the MIME.</param>
         /// <param name="type">The type.</param>
         /// <returns></returns>
-        public async Task<MessageResult> SendAttachmentAsync(string userId, Stream stream, string filename, string mimeType, string type = "file")
+        public async Task<MessageResult> SendFileAttachmentAsync(string userId, Stream stream, string filename, string mimeType, string type = "file")
         {            
             var attachment = (Attachment)null;
 
@@ -485,6 +523,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     Type = error.Value<string>("type")
                 };
             }
+
             return result;
         }
 

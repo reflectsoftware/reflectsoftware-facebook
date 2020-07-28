@@ -63,12 +63,12 @@ namespace TestHarness
                     new TextQuickReply("Small", "small selected"),
                     new TextQuickReply("Medium", "medium selected"),
                     new TextQuickReply("Large", "large selected"),
-                    new TextQuickReply("One", "One selected"),
-                    new TextQuickReply("Two", "Two selected"),
-                    new TextQuickReply("Three", "Three selected"),
-                    new TextQuickReply("Four", "Four selected"),
-                    new TextQuickReply("Five", "Five selected"),
-                    new TextQuickReply("Six", "Six selected"),
+                    //new TextQuickReply("One", "One selected"),
+                    //new TextQuickReply("Two", "Two selected"),
+                    //new TextQuickReply("Three", "Three selected"),
+                    //new TextQuickReply("Four", "Four selected"),
+                    //new TextQuickReply("Five", "Five selected"),
+                    //new TextQuickReply("Six", "Six selected"),
                 }
             };
 
@@ -105,7 +105,7 @@ namespace TestHarness
 
         private static async Task SendButtonTemplateAsync(ClientMessenger client, string userId)
         {            
-            // *NOTE: You're only allowed 3 buttons at a time
+            // *NOTE: You're only allowed to send 3 buttons at a time
             var list = new List<Button> 
             {
                 //new UrlButton()
@@ -113,26 +113,26 @@ namespace TestHarness
                 //    Title = "My Url",
                 //    Url = "http://google.com"
                 //},
-                new PostbackButton()
-                {
-                    Title = "Button 1",
-                    Payload = "Button 1 selected"
-                },
-                new PostbackButton()
-                {
-                    Title = "Button 2",
-                    Payload = "Button 2 selected"
-                },
-                new PostbackButton()
-                {
-                    Title = "Button 3",
-                    Payload = "Button 3 selected"
-                },
-                //new CallMeButton()
+                //new PostbackButton
                 //{
-                //    Title = "Call me please",
-                //    PhoneNumber = "416419001"
+                //    Title = "Button 1",
+                //    Payload = "Button 1 selected"
                 //},
+                //new PostbackButton
+                //{
+                //    Title = "Button 2",
+                //    Payload = "Button 2 selected"
+                //},
+                //new PostbackButton
+                //{
+                //    Title = "Button 3",
+                //    Payload = "Button 3 selected"
+                //},
+                new CallMeButton()
+                {
+                    Title = "Call me please",
+                    PhoneNumber = "416555000"
+                },
                 //new LogInButton()
                 //{
                 //    Url = "http://google.com"
@@ -396,10 +396,10 @@ namespace TestHarness
 
             // await SendSimpleMessageAync(client, "2001954456545360");
             // await SendAttachmentsMessageAync(client, "2001954456545360");
-            await SendQuickRepliesAsync(client, "2001954456545360");
-            // await SendButtonTemplateAsync(client, "2001954456545360");
+            // await SendQuickRepliesAsync(client, "2001954456545360");
+            await SendButtonTemplateAsync(client, "2001954456545360");
             // await SendGenericTemplateAsync(client, "2001954456545360");
-            // await SendCardAsync(client, "2001954456545360");
+            //  await SendCardAsync(client, "2001954456545360");
             // await SendContactAsync(client, "2001954456545360");
             // await SendLocationAsync(client, "2001954456545360");
             // await SendCarouselAsync(client, "2001954456545360");

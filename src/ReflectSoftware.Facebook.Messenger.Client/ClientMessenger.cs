@@ -23,7 +23,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
     /// <summary>
     /// https://developers.facebook.com/docs/messenger-platform
     /// </summary>
-    public class ClientMessenger
+    public class ClientMessenger : IClientMessenger
     {
         private readonly string _apiVersion;
         private readonly string _accessToken;
@@ -34,7 +34,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         /// </summary>
         /// <param name="accessToken">The facebook access_token.</param>
         /// <param name="version">The version.</param>
-        public ClientMessenger(string accessToken, string version = "7.0") 
+        public ClientMessenger(string accessToken, string version = "8.0")
         {
             _accessToken = accessToken;
             _apiVersion = version;
@@ -59,8 +59,6 @@ namespace ReflectSoftware.Facebook.Messenger.Client
 
             using (var client = new HttpClient())
             {
-                client.Timeout = TimeSpan.FromSeconds(10);
-                
                 using (var response = await client.PostAsync($"https://graph.facebook.com/v{_apiVersion}/{path}?access_token={_accessToken}", content))
                 {
                     var responseData = await response.Content.ReadAsStringAsync();
@@ -90,8 +88,6 @@ namespace ReflectSoftware.Facebook.Messenger.Client
 
             using (var client = new HttpClient())
             {
-                client.Timeout = TimeSpan.FromSeconds(10);
-
                 var request = new HttpRequestMessage(HttpMethod.Delete, $"https://graph.facebook.com/v{_apiVersion}/{path}?access_token={_accessToken}")
                 {
                     Content = content
@@ -117,8 +113,6 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         {
             using (var client = new HttpClient())
             {
-                client.Timeout = TimeSpan.FromSeconds(10);
-
                 try
                 {
                     var response = await client.GetStringAsync($"https://graph.facebook.com/{parameters}&access_token={_accessToken}");
@@ -128,7 +122,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                         return data;
                     }
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                 }
 
@@ -210,7 +204,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                     {
                         setting_type = "call_to_actions",
                         thread_state = "new_thread",
-                        call_to_actions = new []
+                        call_to_actions = new[]
                         {
                             new { payload }
                         }
@@ -309,11 +303,11 @@ namespace ReflectSoftware.Facebook.Messenger.Client
                 });
 
                 result.Error = CreateResultError(returnValue);
-                if(result.Error == null)
+                if (result.Error == null)
                 {
                     result.Message = returnValue.Value<string>("recipient_id");
                     result.Success = true;
-                }   
+                }
             }
             catch (Exception ex)
             {
@@ -332,7 +326,7 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         /// <param name="messageType">Type of the message: RESPONSE, UPDATE, MESSAGE_TAG</param>
         /// <param name="messageTag">The message tag.</param>
         /// <returns></returns>
-        public async Task<MessageResult> SendMessageAsync(string userId, MessageSent message, 
+        public async Task<MessageResult> SendMessageAsync(string userId, MessageSent message,
             NotificationType notificationType = NotificationType.Regular,
             MessageType? messageType = null,
             MessageTag? messageTag = null)
@@ -409,13 +403,13 @@ namespace ReflectSoftware.Facebook.Messenger.Client
         /// <param name="type">The type.</param>
         /// <returns></returns>
         public async Task<MessageResult> SendFileAttachmentAsync(string userId, Stream stream, string filename, string mimeType, string type = "file")
-        {            
+        {
             var attachment = (Attachment)null;
 
             switch (type)
             {
                 case "image":
-                    attachment = new ImageAttachment();                    
+                    attachment = new ImageAttachment();
                     break;
 
                 case "video":
